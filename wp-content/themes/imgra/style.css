@@ -6063,7 +6063,7 @@ body.active #mobile-nav {
 	left: 0;
 	text-align: center;
 	width: 100%;
-	padding-bottom: 15px;
+	padding:0 15px 15px;
 	background: #002e5b;
 }
 
@@ -6078,13 +6078,11 @@ body.active #mobile-nav {
 
 .team-item .team-member-des {
 	padding: 0px 0;
-	text-align: center;
 	background: #002e5b;
 	padding-bottom: 5px;
 }
 
 .team-item .team-member-des P {
-	max-width: 300px;
 	margin: auto;
 	font-size: 13px;
 	font-weight: 400;
@@ -6104,7 +6102,6 @@ body.active #mobile-nav {
 	margin: 0 10px;
 	height: 20px;
 	width: 20px;
-	font-family: 'FontAwesome';
 }
 
 .team-2-part {

@@ -180,7 +180,7 @@ function imgra_scripts() {
     wp_enqueue_style( 'animate', get_template_directory_uri() . '/css/animate.min.css', array(), '3.5.2' );
     wp_enqueue_style( 'circle', get_template_directory_uri() . '/css/circle.css', array(), _S_VERSION );
     wp_enqueue_style( 'flaticon', get_template_directory_uri() . '/css/flaticon.css', array(), _S_VERSION );
-    wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0' );
+//    wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0' );
     wp_enqueue_style( 'progressbar', get_template_directory_uri() . '/css/progressbar.min.css', array(), '0.9.0' );
     wp_enqueue_style( 'rateyo', get_template_directory_uri() . '/css/rateyo.min.css', array(), '0.9.0' );
     wp_enqueue_style( 'swiper', get_template_directory_uri() . '/css/swiper.min.css', array(), '4.1.0' );

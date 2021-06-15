@@ -2,7 +2,7 @@
 
 namespace Elementor;
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
@@ -11,21 +11,22 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-
-class imgra_team extends  \Elementor\Widget_Base   {
+class imgra_team extends \Elementor\Widget_Base
+{
 
     /**
      * Get widget name.
      *
      * Retrieve oEmbed widget name.
      *
+     * @return string Widget name.
      * @since 1.0.0
      * @access public
      *
-     * @return string Widget name.
      */
 
-    public function get_name() {
+    public function get_name()
+    {
         return 'imgra_team';
     }
 
@@ -34,14 +35,15 @@ class imgra_team extends  \Elementor\Widget_Base   {
      *
      * Retrieve oEmbed widget title.
      *
+     * @return string Widget title.
      * @since 1.0.0
      * @access public
      *
-     * @return string Widget title.
      */
 
-    public function get_title() {
-        return __( 'Imgra Team', 'imgra' );
+    public function get_title()
+    {
+        return __('Imgra Team', 'imgra');
     }
 
     /**
@@ -49,13 +51,14 @@ class imgra_team extends  \Elementor\Widget_Base   {
      *
      * Retrieve oEmbed widget icon.
      *
+     * @return string Widget icon.
      * @since 1.0.0
      * @access public
      *
-     * @return string Widget icon.
      */
 
-    public function get_icon() {
+    public function get_icon()
+    {
         return 'eicon-person';
     }
 
@@ -64,14 +67,15 @@ class imgra_team extends  \Elementor\Widget_Base   {
      *
      * Retrieve the list of categories the oEmbed widget belongs to.
      *
+     * @return array Widget categories.
      * @since 1.0.0
      * @access public
      *
-     * @return array Widget categories.
      */
 
-    public function get_categories() {
-        return [ 'imgra' ];
+    public function get_categories()
+    {
+        return ['imgra'];
     }
 
     /**
@@ -83,7 +87,8 @@ class imgra_team extends  \Elementor\Widget_Base   {
      * @access protected
      */
 
-    protected function _register_controls() {
+    protected function _register_controls()
+    {
 
         $this->start_controls_section(
             'team_section',
@@ -93,21 +98,23 @@ class imgra_team extends  \Elementor\Widget_Base   {
             ]
         );
 
+        $this->add_control(
+            'image',
+            [
+                'label' => __('Choose Image', 'elementor'),
+                'type' => Controls_Manager::MEDIA,
+                'dynamic' => [
+                    'active' => true,
+                ],
+                'default' => [
+                    'url' => Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
 
 
         // Title
 
-        $this->add_control(
-            'image',
-            [
-                'label' => __('Select Team Image', 'imgra'),
-                'type' => \Elementor\Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
-                ],
-            ]
-        );
-        // Image
         $this->add_control(
             'title',
             [
@@ -147,7 +154,7 @@ class imgra_team extends  \Elementor\Widget_Base   {
         $repeater->add_control(
             'divSocial',
             [
-                'label' => __( 'Social Links', 'imgra' ),
+                'label' => __('Social Links', 'imgra'),
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -167,16 +174,16 @@ class imgra_team extends  \Elementor\Widget_Base   {
         $repeater->add_control(
             'icon',
             [
-                'label' => __( 'Icon', 'imgra' ),
+                'label' => __('Icon', 'imgra'),
                 'type' => \Elementor\Controls_Manager::ICONS
             ]
         );
         $repeater->add_control(
             'icon_link',
             [
-                'label' => __( 'Link', 'imgra' ),
+                'label' => __('Link', 'imgra'),
                 'type' => \Elementor\Controls_Manager::URL,
-                'placeholder' => __( 'https://your-link.com', 'imgra' )
+                'placeholder' => __('https://your-link.com', 'imgra')
             ]
         );
 
@@ -201,6 +208,8 @@ class imgra_team extends  \Elementor\Widget_Base   {
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
+
+
         // Text Alignment
         $this->add_control(
             'text_alignment',
@@ -229,10 +238,10 @@ class imgra_team extends  \Elementor\Widget_Base   {
         $this->add_responsive_control(
             'padding',
             [
-                'label' => __( 'Padding', 'imgra' ),
+                'label' => __('Padding', 'imgra'),
                 'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%', 'em' ],
-                'devices' => [ 'desktop', 'tablet', 'mobile' ],
+                'size_units' => ['px', '%', 'em'],
+                'devices' => ['desktop', 'tablet', 'mobile'],
                 'desktop_default' => [
                     'size' => 30,
                     'unit' => 'px',
@@ -246,10 +255,12 @@ class imgra_team extends  \Elementor\Widget_Base   {
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .our-team-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .team-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
+
+
         //Title Style
         $this->add_control(
             'title_style',
@@ -273,7 +284,7 @@ class imgra_team extends  \Elementor\Widget_Base   {
             [
                 'label' => __('Text Color', 'imgra'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#232323',
+                'default' => '#fff',
                 'selectors' => [
                     '{{WRAPPER}} h4' => 'color: {{VALUE}}',
                 ],
@@ -302,7 +313,7 @@ class imgra_team extends  \Elementor\Widget_Base   {
             [
                 'label' => __('Text Color', 'imgra'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#78787c',
+                'default' => '#fff',
                 'selectors' => [
                     '{{WRAPPER}} p' => 'color: {{VALUE}}',
                 ],
@@ -322,7 +333,7 @@ class imgra_team extends  \Elementor\Widget_Base   {
             [
                 'label' => __('Color', 'imgra'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#78787c',
+                'default' => '#ffad18',
                 'selectors' => [
                     '{{WRAPPER}} i' => 'color: {{VALUE}}',
                 ],
@@ -333,6 +344,7 @@ class imgra_team extends  \Elementor\Widget_Base   {
 
     }
 
+
     /**
      * Render oEmbed widget output on the frontend.
      *
@@ -342,38 +354,58 @@ class imgra_team extends  \Elementor\Widget_Base   {
      * @access protected
      */
 
-    protected function render() {
+    protected function render()
+    {
         $settings = $this->get_settings_for_display();
 
-        if ( !empty( $settings['list'] ) ) {
-            ?>
 
-            <div class="team-item">
-                <div class="team-img">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/team-1.jpg" alt="">
-                    <div class="team-member-name">
-                        <h2>Tomas Andersone</h2>
-                        <div class="team-member-des">
-                            <p>Main Consultant</p>
+        ?>
+
+        <div class="team-item">
+                <div class="team-img text-<?php echo esc_attr( $settings['text_alignment'] ); ?>">
+                    <?php
+                    if (!empty($settings['image']['url'])) :?>
+                        <img src="<?php echo esc_url($settings['image']['url']); ?>"
+                             alt="<?php echo esc_html($settings['title']); ?>">
+                    <?php endif; ?>
+
+                    <div class="team-member-name text-<?php echo esc_attr( $settings['text_alignment'] ); ?>">
+
+                        <h2><?php echo esc_html($settings['title']); ?></h2>
+
+                        <div class="team-member-des text-<?php echo esc_attr( $settings['text_alignment'] ); ?>">
+                            <p><?php echo esc_html($settings['content']); ?></p>
                         </div>
+
                     </div>
+
                 </div>
-                <div class="team-social">
+
+
+            <?php if (!empty($settings['list'])) : ?>
+                <div class="team-social text-<?php echo esc_attr( $settings['text_alignment'] ); ?>">
                     <ul class="flat-list">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        <?php
+                        foreach ($settings['list'] as $item) :
+                            if (!empty($item['icon_link']['url']) || !empty($item['icon'])) :?>
+                                <li>
+                                    <a href="<?php echo esc_url($item['icon_link']['url']); ?>">
+                                        <?php \Elementor\Icons_Manager::render_icon( $item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                                    </a>
+                                </li>
+                            <?php endif;
+
+                            endforeach; ?>
+
                     </ul>
                 </div>
-            </div>
+            <?php endif; ?>
 
-
+        </div>
         <?php
-        }
     }
+
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new imgra_team() );
+Plugin::instance()->widgets_manager->register_widget_type(new imgra_team());
