@@ -198,7 +198,7 @@
                     <?php if (esc_url($fb_link) != '') : ?>
                         <li>
                             <a href="<?php echo esc_url($fb_link); ?>">
-                                <i class="fa fa-facebook"></i>
+                                <i class="fab fa-facebook-f"></i>
                                 <h6>Facebook</h6>
                                 <span class="counter">12546</span>
                             </a>
@@ -207,7 +207,7 @@
                     if (esc_url($tw_link) != '') :?>
                         <li>
                             <a href="<?php echo esc_url($tw_link); ?>">
-                                <i class="fa fa-twitter"></i>
+                                <i class="fab fa-twitter"></i>
                                 <h6>Twiter</h6>
                                 <span class="counter">12546</span>
                             </a>
@@ -216,7 +216,7 @@
                     if (esc_url($pi_link) != '') :?>
                         <li>
                             <a href="<?php echo esc_url($pi_link); ?>">
-                                <i class="fa fa-pinterest"></i>
+                                <i class="fab fa-pinterest"></i>
                                 <h6>Pinterest</h6>
                                 <span class="counter">12546</span>
                             </a>

@@ -249,7 +249,7 @@ h6 {
 p {
 	font-size: 14px;
 	line-height: 24px;
-	color: #515050;
+
 }
 
 img {
@@ -6417,7 +6417,6 @@ body.active #mobile-nav {
 .twitter-feed-box .twitter-icon i {
 	color: #fff;
 	font-size: 25px;
-	font-family: 'FontAwesome';
 }
 
 .twitter-feed-part .swiper-button-prev,

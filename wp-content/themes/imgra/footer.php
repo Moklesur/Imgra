@@ -41,7 +41,7 @@ $copyright_text = get_theme_mod('copyright_text');
                     <div class="row no-gutters d-flex align-items-center">
                         <div class="col-lg-1 col-md-3 col-sm-3 col-4">
                             <div class="p-relative">
-                                <div class="twitter-icon"><i class="fa fa-twitter"></i></div>
+                                <div class="twitter-icon"><i class="fab fa-twitter"></i></div>
                             </div>
                         </div>
                         <div class="col-lg-10 col-md-7 col-sm-7 col-8 text-left">
