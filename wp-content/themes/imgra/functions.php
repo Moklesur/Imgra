@@ -226,6 +226,7 @@ function imgra_elementor_widgets() {
     if ( defined('ELEMENTOR_PATH') && class_exists('Elementor\Widget_Base') ) {
         require get_template_directory() . '/plugin/imgra-circular-progress-bar.php';
         require get_template_directory() . '/plugin/imgra-team.php';
+        require get_template_directory() . '/plugin/imgra-price-table.php';
     }
 }
 add_action( 'elementor/widgets/widgets_registered', 'imgra_elementor_widgets' );
