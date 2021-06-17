@@ -175,7 +175,11 @@ class imgra_team extends \Elementor\Widget_Base
             'icon',
             [
                 'label' => __('Icon', 'imgra'),
-                'type' => \Elementor\Controls_Manager::ICONS
+                'type' => \Elementor\Controls_Manager::ICONS,
+                'default' => [
+                    'value' => 'fas fa-star',
+                    'library' => 'solid',
+                    ]
             ]
         );
         $repeater->add_control(
@@ -194,6 +198,34 @@ class imgra_team extends \Elementor\Widget_Base
                 'label' => __('Add New Social Item', 'imgra'),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
+                'default' => [
+                    [
+                        'social_title' => 'Facebook',
+                        'icon' => 'fab fa-facebook-f',
+                        'icon_link' => __( 'https://your-link.com', 'imgra' ),
+                    ],
+                    [
+                        'social_title' => 'Twitter',
+                        'icon' => 'fab fa-twitter',
+                        'icon_link' => __( 'https://your-link.com', 'imgra' ),
+                    ],
+                    [
+                        'social_title' => 'Pinterest',
+                        'icon' => 'fab fa-pinterest',
+                        'icon_link' => __( 'https://your-link.com', 'imgra' ),
+                    ],
+                    [
+                        'social_title' => 'Linkedin',
+                        'icon' => 'fab fa-linkedin-in',
+                        'icon_link' => __( 'https://your-link.com', 'imgra' ),
+                    ],
+                    [
+                        'social_title' => 'Instagram',
+                        'icon' => 'fab fa-instagram',
+                        'icon_link' => __( 'https://your-link.com', 'imgra' ),
+                    ],
+
+                ],
                 'title_field' => '{{{ social_title }}}',
             ]
         );

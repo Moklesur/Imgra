@@ -265,17 +265,29 @@ class imgra_price_table extends \Elementor\Widget_Base
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .team-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .single-table' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
 
+        //Background Color
+        $this->add_control(
+            'single_table_bg_color',
+            [
+                'label' => __('Background Color', 'imgra'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} .single-table' => 'background-color: {{VALUE}}',
+                ],
+            ]
+        );
 
         //Title Style
         $this->add_control(
-            'title_style',
+            'price_type_style',
             [
-                'label' => __('Name', 'imgra'),
+                'label' => __('Price Type', 'imgra'),
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -283,28 +295,71 @@ class imgra_price_table extends \Elementor\Widget_Base
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name' => 'title_typography',
+                'name' => 'price_type_typography',
                 'label' => __('Typography', 'imgra'),
                 'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} h4',
+                'selector' => '{{WRAPPER}} h6',
             ]
         );
         $this->add_control(
-            'title_color',
+            'price_type_color',
+            [
+                'label' => __('Text Color', 'imgra'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#ffad18',
+                'selectors' => [
+                    '{{WRAPPER}} h6' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        //Content Style
+
+        $this->add_control(
+            'price_amount_style',
+            [
+                'label' => __('Price Amount', 'imgra'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'price_amount_typography',
+                'label' => __('Typography', 'imgra'),
+                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'selector' => '{{WRAPPER}} span.t-price',
+            ]
+        );
+        $this->add_control(
+            'price_amount_color',
             [
                 'label' => __('Text Color', 'imgra'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#fff',
                 'selectors' => [
-                    '{{WRAPPER}} h4' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} span.t-price' => 'color: {{VALUE}}',
                 ],
             ]
         );
-        //Content Style
+
         $this->add_control(
-            'content_style',
+            'price_amount_bg_color',
             [
-                'label' => __('Position', 'imgra'),
+                'label' => __('Background Color', 'imgra'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#ffad18',
+                'selectors' => [
+                    '{{WRAPPER}} .table_price' => 'background-color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'price_duration_style',
+            [
+                'label' => __('Price Duration', 'imgra'),
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -312,14 +367,43 @@ class imgra_price_table extends \Elementor\Widget_Base
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name' => 'content_typography',
+                'name' => 'price_duration_typography',
+                'label' => __('Typography', 'imgra'),
+                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'selector' => '{{WRAPPER}} span.duration',
+            ]
+        );
+        $this->add_control(
+            'price_duration_color',
+            [
+                'label' => __('Text Color', 'imgra'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#002e5b',
+                'selectors' => [
+                    '{{WRAPPER}} span.duration' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'price_item_style',
+            [
+                'label' => __('Price Item', 'imgra'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'price_item_typography',
                 'label' => __('Typography', 'imgra'),
                 'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
                 'selector' => '{{WRAPPER}} .list-part p',
             ]
         );
         $this->add_control(
-            'content_color',
+            'price_item_color',
             [
                 'label' => __('Text Color', 'imgra'),
                 'type' => \Elementor\Controls_Manager::COLOR,
@@ -338,6 +422,96 @@ class imgra_price_table extends \Elementor\Widget_Base
                 'default' => '#909090',
                 'selectors' => [
                     '{{WRAPPER}} .list-part p.no-support' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        //order button
+        $this->add_control(
+            'order_button_style',
+            [
+                'label' => __('Order Button', 'imgra'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'order_button_typography',
+                'label' => __('Typography', 'imgra'),
+                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'selector' => '{{WRAPPER}} a',
+            ]
+        );
+        $this->add_control(
+            'order_button_border_color',
+            [
+                'label' => __('Border Color', 'imgra'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#ffad18',
+                'selectors' => [
+                    '{{WRAPPER}} a' => 'border-color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'order_button_hover_color',
+            [
+                'label' => __('Text Hover Color', 'imgra'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} a:hover' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'order_button_color',
+            [
+                'label' => __('Text Color', 'imgra'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#ffad18',
+                'selectors' => [
+                    '{{WRAPPER}} a' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'order_button_border_hover_color',
+            [
+                'label' => __('Border Hover Color', 'imgra'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#ffad18',
+                'selectors' => [
+                    '{{WRAPPER}} a:hover' => 'border-color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'order_button_bg_color',
+            [
+                'label' => __('Background Color', 'imgra'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} a' => 'background-color: {{VALUE}}',
+                ],
+            ]
+        );
+
+
+        $this->add_control(
+            'order_button_bg_hover_color',
+            [
+                'label' => __('Background Hover Color', 'imgra'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#ffad18',
+                'selectors' => [
+                    '{{WRAPPER}} a:hover' => 'background-color: {{VALUE}}',
                 ],
             ]
         );
@@ -363,8 +537,9 @@ class imgra_price_table extends \Elementor\Widget_Base
 
         ?>
 
-        <div class="single-table">
+        <div class="single-table text-<?php echo esc_attr( $settings['text_alignment'] ); ?>">
             <h6><?php echo esc_html($settings['price_type']); ?></h6>
+
             <div class="table_price">
                 <span class="t-price"><?php echo esc_html($settings['price_amount']); ?></span>
                 <span class="duration"><?php echo esc_html($settings['duration']); ?></span>
