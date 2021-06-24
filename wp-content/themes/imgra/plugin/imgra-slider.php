@@ -91,14 +91,33 @@ class imgra_slider extends \Elementor\Widget_Base
     {
 
         $this->start_controls_section(
-            'team_section',
+            'slider_section',
             [
                 'label' => __('Setting', 'imgra'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
 
-        $this->add_control(
+        $repeater = new \Elementor\Repeater();
+
+        $repeater->add_control(
+            'divTitle',
+            [
+                'type' => \Elementor\Controls_Manager::DIVIDER,
+            ]
+        );
+
+        // Slider
+        $repeater->add_control(
+            'divSocial',
+            [
+                'label' => __('Slider Image', 'imgra'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $repeater->add_control(
             'image',
             [
                 'label' => __('Choose Image', 'elementor'),
@@ -112,80 +131,59 @@ class imgra_slider extends \Elementor\Widget_Base
             ]
         );
 
-
-        // Title
-
-        $this->add_control(
-            'title',
+        // Slider Title
+        $repeater->add_control(
+            'slider_title',
             [
-                'label' => __('Name', 'imgra'),
+                'label' => __('Slider Title', 'imgra'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __('Jono', 'imgra'),
+                'default' => __('Slider', 'imgra'),
                 'label_block' => true,
             ]
         );
+
+        //  Sub Title
+        $repeater->add_control(
+            'heading_title',
+            [
+                'label' => __('Sub Heading', 'imgra'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => __('Sub Heading', 'imgra'),
+                'label_block' => true,
+            ]
+        );
+
         // Content
-        $this->add_control(
+        $repeater->add_control(
             'divContent',
             [
                 'type' => \Elementor\Controls_Manager::DIVIDER,
             ]
         );
-        $this->add_control(
+        $repeater->add_control(
             'content',
             [
-                'label' => __('Position', 'imgra'),
-                'type' => \Elementor\Controls_Manager::TEXT,
+                'label' => __('Slider Description', 'imgra'),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'label_block' => true,
-                'default' => __('Designer', 'imgra')
+                'default' => __('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat incidunt laborum molestias optio sit sunt', 'imgra')
             ]
         );
 
-        $repeater = new \Elementor\Repeater();
-
+        // Slider Links
         $repeater->add_control(
-            'divTitle',
+            'btn_text',
             [
-                'type' => \Elementor\Controls_Manager::DIVIDER,
-            ]
-        );
-
-        // Social Links
-        $repeater->add_control(
-            'divSocial',
-            [
-                'label' => __('Social Links', 'imgra'),
-                'type' => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
-        // Social Title
-        $repeater->add_control(
-            'social_title',
-            [
-                'label' => __('Title', 'imgra'),
+                'label' => __('Button Text', 'imgra'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __('Facebook', 'imgra'),
+                'default' => __('EXPLORE MORE', 'imgra'),
                 'label_block' => true,
             ]
         );
-
-        // Social Links 1
         $repeater->add_control(
-            'icon',
+            'btn_link',
             [
-                'label' => __('Icon', 'imgra'),
-                'type' => \Elementor\Controls_Manager::ICONS,
-                'default' => [
-                    'value' => 'fas fa-star',
-                    'library' => 'solid',
-                ]
-            ]
-        );
-        $repeater->add_control(
-            'icon_link',
-            [
-                'label' => __('Link', 'imgra'),
+                'label' => __('Button Url', 'imgra'),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => __('https://your-link.com', 'imgra')
             ]
@@ -195,38 +193,21 @@ class imgra_slider extends \Elementor\Widget_Base
         $this->add_control(
             'list',
             [
-                'label' => __('Add New Social Item', 'imgra'),
+                'label' => __('Add New Slider', 'imgra'),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
                     [
-                        'social_title' => 'Facebook',
-                        'icon' => 'fab fa-facebook-f',
-                        'icon_link' => __( 'https://your-link.com', 'imgra' ),
-                    ],
-                    [
-                        'social_title' => 'Twitter',
-                        'icon' => 'fab fa-twitter',
-                        'icon_link' => __( 'https://your-link.com', 'imgra' ),
-                    ],
-                    [
-                        'social_title' => 'Pinterest',
-                        'icon' => 'fab fa-pinterest',
-                        'icon_link' => __( 'https://your-link.com', 'imgra' ),
-                    ],
-                    [
-                        'social_title' => 'Linkedin',
-                        'icon' => 'fab fa-linkedin-in',
-                        'icon_link' => __( 'https://your-link.com', 'imgra' ),
-                    ],
-                    [
-                        'social_title' => 'Instagram',
-                        'icon' => 'fab fa-instagram',
-                        'icon_link' => __( 'https://your-link.com', 'imgra' ),
-                    ],
+                        'image' => Utils::get_placeholder_image_src(),
+                        'slider_title' => 'Title',
+                        'heading_title' => 'Sub Heading',
+                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat incidunt laborum molestias optio sit sunt',
+                        'btn_text' => __( 'EXPLORE MORE', 'imgra' ),
+                        'btn_link' => __( 'https://your-link.com', 'imgra' ),
+                    ]
 
                 ],
-                'title_field' => '{{{ social_title }}}',
+                'title_field' => '{{{ slider_title }}}',
             ]
         );
 
@@ -287,7 +268,7 @@ class imgra_slider extends \Elementor\Widget_Base
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .team-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .banner-part' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -297,7 +278,7 @@ class imgra_slider extends \Elementor\Widget_Base
         $this->add_control(
             'title_style',
             [
-                'label' => __('Name', 'imgra'),
+                'label' => __('Title', 'imgra'),
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -308,7 +289,7 @@ class imgra_slider extends \Elementor\Widget_Base
                 'name' => 'title_typography',
                 'label' => __('Typography', 'imgra'),
                 'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} h4',
+                'selector' => '{{WRAPPER}} h1',
             ]
         );
         $this->add_control(
@@ -318,15 +299,46 @@ class imgra_slider extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#fff',
                 'selectors' => [
-                    '{{WRAPPER}} h4' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} h1' => 'color: {{VALUE}}',
                 ],
             ]
         );
+
+        //Sub Title Style
+        $this->add_control(
+            'heading_title_style',
+            [
+                'label' => __('Sub Heading', 'imgra'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'heading_title_typography',
+                'label' => __('Typography', 'imgra'),
+                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'selector' => '{{WRAPPER}} h2',
+            ]
+        );
+        $this->add_control(
+            'heading_title_color',
+            [
+                'label' => __('Text Color', 'imgra'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} h2' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
         //Content Style
         $this->add_control(
             'content_style',
             [
-                'label' => __('Position', 'imgra'),
+                'label' => __('Description', 'imgra'),
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -351,23 +363,70 @@ class imgra_slider extends \Elementor\Widget_Base
                 ],
             ]
         );
-        //Icon Style
+
+
+        //Content Style
         $this->add_control(
-            'icon_style',
+            'btn_style',
             [
-                'label' => __('Icons', 'imgra'),
+                'label' => __('Button', 'imgra'),
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
         );
-        $this->add_control(
-            'icon_color',
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
             [
-                'label' => __('Color', 'imgra'),
+                'name' => 'button_typography',
+                'label' => __('Typography', 'imgra'),
+                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'selector' => '{{WRAPPER}} a',
+            ]
+        );
+        $this->add_control(
+            'button_color',
+            [
+                'label' => __('Text Color', 'imgra'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#ffad18',
+                'default' => '#fff',
                 'selectors' => [
-                    '{{WRAPPER}} i' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} a' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'button_hover_color',
+            [
+                'label' => __('Hover Color', 'imgra'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} a' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'button_bg_color',
+            [
+                'label' => __('Background Color', 'imgra'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} a' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'button_bg_hover_color',
+            [
+                'label' => __('Background Hover Color', 'imgra'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} a' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -396,7 +455,8 @@ class imgra_slider extends \Elementor\Widget_Base
         <section class="banner-part">
             <div class="swiper-container banner-slider home-one" data-swiper-config='{"loop": true, "effect": "fade", "speed": 800, "autoplay": 5000, "paginationClickable": true }'>
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide banner-item" data-bg-image="images/bg/slider-1.jpg">
+
+                    <div class="swiper-slide banner-item" data-bg-image="<?php echo get_template_directory_uri() ?>/images/bg/slider-1.jpg">
                         <div class="container">
                             <div class="row d-flex justify-content-center">
                                 <div class="col-xl-12 banner-caption">
@@ -411,7 +471,7 @@ class imgra_slider extends \Elementor\Widget_Base
                         </div>
                     </div>
 
-                    <div class="swiper-slide banner-item" data-bg-image="images/bg/2.jpg">
+                    <div class="swiper-slide banner-item" data-bg-image="<?php echo get_template_directory_uri() ?>/images/bg/2.jpg">
                         <div class="container">
                             <div class="row d-flex justify-content-center">
                                 <div class="col-xl-12 banner-caption">
@@ -423,6 +483,8 @@ class imgra_slider extends \Elementor\Widget_Base
                             </div>
                         </div>
                     </div>
+
+
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
