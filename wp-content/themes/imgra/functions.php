@@ -228,6 +228,7 @@ function imgra_elementor_widgets() {
         require get_template_directory() . '/plugin/imgra-team.php';
         require get_template_directory() . '/plugin/imgra-price-table.php';
         require get_template_directory() . '/plugin/imgra-slider.php';
+        require get_template_directory() . '/plugin/imgra-testimonial.php';
     }
 }
 add_action( 'elementor/widgets/widgets_registered', 'imgra_elementor_widgets' );

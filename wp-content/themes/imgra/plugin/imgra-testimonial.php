@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
  *
  * @since 1.0.0
  */
-class imgra_slider extends \Elementor\Widget_Base
+class imgra_testimonial extends \Elementor\Widget_Base
 {
 
     /**
@@ -27,7 +27,7 @@ class imgra_slider extends \Elementor\Widget_Base
 
     public function get_name()
     {
-        return 'imgra_slider';
+        return 'imgra_testimonial';
     }
 
     /**
@@ -43,7 +43,7 @@ class imgra_slider extends \Elementor\Widget_Base
 
     public function get_title()
     {
-        return __('Imgra Slider', 'imgra');
+        return __('Imgra Testimonial', 'imgra');
     }
 
     /**
@@ -59,7 +59,7 @@ class imgra_slider extends \Elementor\Widget_Base
 
     public function get_icon()
     {
-        return 'eicon-post-slider';
+        return 'eicon-testimonial-carousel';
     }
 
     /**
@@ -91,36 +91,27 @@ class imgra_slider extends \Elementor\Widget_Base
     {
 
         $this->start_controls_section(
-            'slider_section',
+            'testimonial_section',
             [
                 'label' => __('Setting', 'imgra'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
 
+
         $repeater = new \Elementor\Repeater();
 
         $repeater->add_control(
-            'divTitle',
+            'divImage',
             [
                 'type' => \Elementor\Controls_Manager::DIVIDER,
-            ]
-        );
-
-        // Slider
-        $repeater->add_control(
-            'divSocial',
-            [
-                'label' => __('Slider Image', 'imgra'),
-                'type' => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'before',
             ]
         );
 
         $repeater->add_control(
             'image',
             [
-                'label' => __('Choose Image', 'elementor'),
+                'label' => __('Choose Image', 'imgra'),
                 'type' => Controls_Manager::MEDIA,
                 'dynamic' => [
                     'active' => true,
@@ -131,83 +122,104 @@ class imgra_slider extends \Elementor\Widget_Base
             ]
         );
 
-        // Slider Title
+
+        // Title
+
         $repeater->add_control(
-            'slider_title',
+            'name',
             [
-                'label' => __('Slider Title', 'imgra'),
+                'label' => __('Name', 'imgra'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __('Slider', 'imgra'),
+                'default' => __('Jono', 'imgra'),
                 'label_block' => true,
             ]
         );
 
-        //  Sub Title
+        // Occupation
+
         $repeater->add_control(
-            'heading_title',
+            'position',
+            [
+                'label' => __('Occupation', 'imgra'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'label_block' => true,
+                'default' => __('Designer', 'imgra')
+            ]
+        );
+
+        // Occupation
+
+        $repeater->add_control(
+            'sub_heading',
             [
                 'label' => __('Sub Heading', 'imgra'),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __('Sub Heading', 'imgra'),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'label_block' => true,
+                'default' => __('Dummy text of the printing and typesetting industr', 'imgra')
+            ]
+        );
+
+        // Rating
+
+        $repeater->add_control(
+            'review_rate',
+            [
+                'label' => __( 'Choose Your Rating', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => '0',
+                'options' => [
+                    '1'  => __( '1', 'imgra' ),
+                    '2' => __( '2', 'imgra' ),
+                    '3' => __( '3', 'imgra' ),
+                    '4' => __( '4', 'imgra' ),
+                    '5' => __( '5', 'imgra' ),
+                ],
             ]
         );
 
         // Content
+
         $repeater->add_control(
-            'divContent',
+            'description',
+            [
+                'label' => __('Description', 'imgra'),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'label_block' => true,
+                'default' => __(' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mveniam.', 'imgra')
+            ]
+        );
+
+        $repeater->add_control(
+            'divSignature',
             [
                 'type' => \Elementor\Controls_Manager::DIVIDER,
             ]
         );
+
+        // Upload Signature
         $repeater->add_control(
-            'content',
+            'signature_image',
             [
-                'label' => __('Slider Description', 'imgra'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'label_block' => true,
-                'default' => __('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat incidunt laborum molestias optio sit sunt', 'imgra')
+                'label' => __('Upload Signature', 'imgra'),
+                'type' => Controls_Manager::MEDIA,
+                'dynamic' => [
+                    'active' => true,
+                ],
+                'default' => [
+                    'url' => Utils::get_placeholder_image_src(),
+                ],
             ]
         );
 
-        // Slider Links
-        $repeater->add_control(
-            'btn_text',
-            [
-                'label' => __('Button Text', 'imgra'),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __('EXPLORE MORE', 'imgra'),
-                'label_block' => true,
-            ]
-        );
-        $repeater->add_control(
-            'btn_link',
-            [
-                'label' => __('Button Url', 'imgra'),
-                'type' => \Elementor\Controls_Manager::URL,
-                'placeholder' => __('https://your-link.com', 'imgra')
-            ]
-        );
 
         // Repeater
         $this->add_control(
-            'list',
+            'testimonial_list',
             [
-                'label' => __('Add New Slider', 'imgra'),
+                'label' => __('Add New Testimonial', 'imgra'),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
-                'default' => [
-                    [
-                        'image' => Utils::get_placeholder_image_src(),
-                        'slider_title' => 'Title',
-                        'heading_title' => 'Sub Heading',
-                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat incidunt laborum molestias optio sit sunt',
-                        'btn_text' => __('EXPLORE MORE', 'imgra'),
-                        'btn_link' => __('https://your-link.com', 'imgra'),
-                    ]
-
-                ],
-                'title_field' => '{{{ slider_title }}}',
+                'title_field' => '{{{ name }}}',
             ]
         );
 
@@ -215,12 +227,14 @@ class imgra_slider extends \Elementor\Widget_Base
 
         // STYLE Settings
         $this->start_controls_section(
-            'team_style_section',
+            'testimonial_style_section',
             [
                 'label' => __('Style', 'imgra'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
+
+
         // Text Alignment
         $this->add_control(
             'text_alignment',
@@ -266,7 +280,7 @@ class imgra_slider extends \Elementor\Widget_Base
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .banner-part' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .team-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -276,7 +290,7 @@ class imgra_slider extends \Elementor\Widget_Base
         $this->add_control(
             'title_style',
             [
-                'label' => __('Title', 'imgra'),
+                'label' => __('Name', 'imgra'),
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -287,7 +301,7 @@ class imgra_slider extends \Elementor\Widget_Base
                 'name' => 'title_typography',
                 'label' => __('Typography', 'imgra'),
                 'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} h1',
+                'selector' => '{{WRAPPER}} h4',
             ]
         );
         $this->add_control(
@@ -297,46 +311,15 @@ class imgra_slider extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#fff',
                 'selectors' => [
-                    '{{WRAPPER}} h1' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} h4' => 'color: {{VALUE}}',
                 ],
             ]
         );
-
-        //Sub Title Style
-        $this->add_control(
-            'heading_title_style',
-            [
-                'label' => __('Sub Heading', 'imgra'),
-                'type' => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name' => 'heading_title_typography',
-                'label' => __('Typography', 'imgra'),
-                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} h2',
-            ]
-        );
-        $this->add_control(
-            'heading_title_color',
-            [
-                'label' => __('Text Color', 'imgra'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#fff',
-                'selectors' => [
-                    '{{WRAPPER}} h2' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
         //Content Style
         $this->add_control(
             'content_style',
             [
-                'label' => __('Description', 'imgra'),
+                'label' => __('Position', 'imgra'),
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -361,70 +344,23 @@ class imgra_slider extends \Elementor\Widget_Base
                 ],
             ]
         );
-
-
-        //Content Style
+        //Icon Style
         $this->add_control(
-            'btn_style',
+            'icon_style',
             [
-                'label' => __('Button', 'imgra'),
+                'label' => __('Icons', 'imgra'),
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
         );
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name' => 'button_typography',
-                'label' => __('Typography', 'imgra'),
-                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} a',
-            ]
-        );
         $this->add_control(
-            'button_color',
+            'icon_color',
             [
-                'label' => __('Text Color', 'imgra'),
+                'label' => __('Color', 'imgra'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#fff',
+                'default' => '#ffad18',
                 'selectors' => [
-                    '{{WRAPPER}} a' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'button_hover_color',
-            [
-                'label' => __('Hover Color', 'imgra'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#fff',
-                'selectors' => [
-                    '{{WRAPPER}} a' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'button_bg_color',
-            [
-                'label' => __('Background Color', 'imgra'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#fff',
-                'selectors' => [
-                    '{{WRAPPER}} a' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'button_bg_hover_color',
-            [
-                'label' => __('Background Hover Color', 'imgra'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#fff',
-                'selectors' => [
-                    '{{WRAPPER}} a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} i' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -447,49 +383,61 @@ class imgra_slider extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
+
         ?>
+        <?php if (!empty($settings['testimonial_list'])) : ?>
+        <div class="swiper-container testimonial-slider" data-swiper-config='{"loop": true, "effect": "slide", "speed": 800, "autoplay": 5000, "paginationClickable": true, "spaceBetween": 25 }' >
+            <div class="swiper-wrapper">
 
-        <?php if (!empty($settings['list'])) : ?>
-        <!-- Banner Part Start -->
-        <section class="banner-part">
-            <div class="swiper-container banner-slider home-one"
-                 data-swiper-config='{"loop": true, "effect": "fade", "speed": 800, "autoplay": 5000, "paginationClickable": true }'>
-                <div class="swiper-wrapper">
-                    <?php
-                    foreach ($settings['list'] as $item) :
-                        ?>
-                        <div class="swiper-slide banner-item"
-                             data-bg-image="<?php echo esc_url($item['image']['url']); ?>">
-                            <div class="container">
-                                <div class="row d-flex justify-content-center">
-                                    <div class="col-xl-12 banner-caption">
-                                        <h2 class="brand-color animated" data-animate="fadeInUp"><?php echo esc_html($item['heading_title']); ?></h2>
-                                        <h1 data-animate="fadeInUp"><?php echo esc_html($item['slider_title']); ?></h1>
-                                        <div class="banner-line"></div>
-                                        <p data-animate="fadeInUp"><?php echo esc_html($item['content']); ?></p>
-
-                                        <a href="#" class="btn-1" data-animate="fadeInUp">EXPLORE MORE</a>
-                                    </div>
+        <?php
+        foreach ($settings['list'] as $item) :
+            ?>
+                <!-- Single Testimonial -->
+                <div class="swiper-slide testimonial-item">
+                    <div class="row">
+                        <div class="col-8 offset-2 col-sm-5 col-xl-4 offset-sm-0 mb-3 mb-sm-0">
+                            <div class="person-detail">
+                                <div class="person-img">
+                                    <img src="<?php echo esc_url($item['image']['url']); ?>" alt="Image">
                                 </div>
+                                <h3>John doe</h3>
+                                <p>UI Designer</p>
                             </div>
                         </div>
-
-
-                    <?php
-                    endforeach; ?>
-
-
+                        <div class="col-12 col-sm-7 col-xl-8">
+                            <div class="person-comment">
+                                <h4>Dummy text of th printing and typeseg industry.</h4>
+                                <ul class="flat-list star">
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star-half-o"></i></li>
+                                </ul>
+                                <div class="mains-comment">
+                                    <p><i class="fa fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mveniam.<i class="fa fa-quote-right"></i> </p>
+                                </div>
+                                <img src="images/testmonial-signeture.png" alt="">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="swiper-pagination"></div>
+        <?php
+        endforeach; ?>
+
             </div>
-        </section>
-        <!-- Banner Part End -->
-    <?php
-    endif;
+            <div class="swiper-pagination"></div>
+        </div>
+
+
+        <?php
+
+            endif;
+
 
     }
 
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new imgra_slider());
+Plugin::instance()->widgets_manager->register_widget_type(new imgra_testimonial());
