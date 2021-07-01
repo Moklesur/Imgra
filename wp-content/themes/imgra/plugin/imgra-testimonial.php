@@ -225,6 +225,104 @@ class imgra_testimonial extends \Elementor\Widget_Base
 
         $this->end_controls_section();
 
+
+        // Slider Settings
+
+        $this->start_controls_section(
+            'slider_settings',
+            [
+                'label' => __( 'Slider Settings', 'imgra' ),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+        //Autoplay
+        $this->add_control(
+            'autoplay',
+            [
+                'label' => __( 'Autoplay', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __( 'Show', 'imgra' ),
+                'label_off' => __( 'Hide', 'imgra' ),
+                'return_value' => 'true',
+                'default' => 'true',
+            ]
+        );
+        //Fade
+        $this->add_control(
+            'fade',
+            [
+                'label' => __( 'Fade', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __( 'True', 'imgra' ),
+                'label_off' => __( 'False', 'imgra' ),
+                'return_value' => 'true',
+                'default' => 'true',
+            ]
+        );
+        //Infinite
+        $this->add_control(
+            'infinite',
+            [
+                'label' => __( 'Infinite', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __( 'True', 'imgra' ),
+                'label_off' => __( 'False', 'imgra' ),
+                'return_value' => 'true',
+                'default' => 'true',
+            ]
+        );
+        //adaptiveHeight
+        $this->add_control(
+            'adaptiveHeight',
+            [
+                'label' => __( 'Adaptive Height', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __( 'True', 'imgra' ),
+                'label_off' => __( 'False', 'imgra' ),
+                'return_value' => 'true',
+                'default' => '',
+            ]
+        );
+        //Arrow
+        $this->add_control(
+            'arrows',
+            [
+                'label' => __( 'Arrows', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __( 'True', 'imgra' ),
+                'label_off' => __( 'False', 'imgra' ),
+                'return_value' => 'true',
+                'default' => '',
+            ]
+        );
+        //Dot
+        $this->add_control(
+            'dot',
+            [
+                'label' => __( 'Dots', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __( 'True', 'imgra' ),
+                'label_off' => __( 'False', 'imgra' ),
+                'return_value' => 'true',
+                'default' => 'true',
+            ]
+        );
+
+        // speed
+        $this->add_control(
+            'speed',
+            [
+                'label' => __( 'Speed', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::NUMBER,
+                'min' => 100,
+                'max' => 50000,
+                'step' => 100,
+                'default' => 1000
+            ]
+        );
+
+        $this->end_controls_section();
+
         // STYLE Settings
         $this->start_controls_section(
             'testimonial_style_section',
@@ -384,13 +482,82 @@ class imgra_testimonial extends \Elementor\Widget_Base
         $settings = $this->get_settings_for_display();
 
 
+//        $autoplay = 'false';
+//        if( esc_attr( $settings['autoplay'] ) === 'true' ){
+//            $autoplay = '5000';
+//        }
+//        $loop = 'false';
+//        if( esc_attr( $settings['loop'] ) === 'true' ){
+//            $loop = 'true';
+//        }
+//
+//        $effect = 'slide';
+//        if( esc_attr( $settings['effect'] ) === 'true' ){
+//            $effect = 'slide';
+//        }
+//        $paginationClickable = 'false';
+//        if( esc_attr( $settings['paginationClickable'] ) === 'true' ){
+//            $paginationClickable = 'true';
+//        }
+//        $speed = '5000';
+//        if( esc_attr( $settings['speed']) ){
+//            $speed = esc_attr( $settings['speed'] );
+//        }
+//        $spaceBetween = '25';
+//        if( esc_attr( $settings['spaceBetween']) ){
+//            $spaceBetween = esc_attr( $settings['spaceBetween'] );
+//        }
+
+
         ?>
         <?php if (!empty($settings['testimonial_list'])) : ?>
         <div class="swiper-container testimonial-slider" data-swiper-config='{"loop": true, "effect": "slide", "speed": 800, "autoplay": 5000, "paginationClickable": true, "spaceBetween": 25 }' >
             <div class="swiper-wrapper">
+        <?php foreach ($settings['testimonial_list'] as $item) :
 
-        <?php
-        foreach ($settings['list'] as $item) :
+
+            $review_rate = $item['review_rate'];
+            if($review_rate == 1) {
+                $review_item = 'fa-star';
+            }else{
+                $review_item = 'fa-star-half-alt';
+            }
+            if($review_rate == 2) {
+                $review_item = 'fa-star';
+                $review_item2 = 'fa-star';
+            }else{
+                $review_item2 = 'fa-star-half-alt';
+            }
+
+            if($review_rate == 3) {
+                $review_item = 'fa-star';
+                $review_item2 = 'fa-star';
+                $review_item3 = 'fa-star';
+            }else{
+                $review_item3 = 'fa-star-half-alt';
+            }
+            if($review_rate == 4) {
+                $review_item = 'fa-star';
+                $review_item2 = 'fa-star';
+                $review_item3 = 'fa-star';
+                $review_item4 = 'fa-star';
+            }else{
+                $review_item4 = 'fa-star-half-alt';
+            }
+
+            if($review_rate == 5) {
+                $review_item = 'fa-star';
+                $review_item2 = 'fa-star';
+                $review_item3 = 'fa-star';
+                $review_item4 = 'fa-star';
+                $review_item5 = 'fa-star';
+            }else{
+                $review_item5 = 'fa-star-half-alt';
+            }
+
+
+
+
             ?>
                 <!-- Single Testimonial -->
                 <div class="swiper-slide testimonial-item">
@@ -398,32 +565,31 @@ class imgra_testimonial extends \Elementor\Widget_Base
                         <div class="col-8 offset-2 col-sm-5 col-xl-4 offset-sm-0 mb-3 mb-sm-0">
                             <div class="person-detail">
                                 <div class="person-img">
-                                    <img src="<?php echo esc_url($item['image']['url']); ?>" alt="Image">
+                                    <img src="<?php echo esc_url($item['image']['url']); ?>" alt="<?php echo esc_html($settings['name']); ?>">
                                 </div>
-                                <h3>John doe</h3>
-                                <p>UI Designer</p>
+                                <h3><?php echo esc_html($item['name']); ?></h3>
+                                <p><?php echo esc_html($item['position']); ?></p>
                             </div>
                         </div>
                         <div class="col-12 col-sm-7 col-xl-8">
                             <div class="person-comment">
-                                <h4>Dummy text of th printing and typeseg industry.</h4>
+                                <h4><?php echo esc_html($item['sub_heading']); ?></h4>
                                 <ul class="flat-list star">
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star-half-o"></i></li>
+                                         <li><i class="fa <?php echo esc_attr($review_item); ?>"></i></li>
+                                         <li><i class="fa <?php echo esc_attr($review_item2); ?>"></i></li>
+                                         <li><i class="fa <?php echo esc_attr($review_item3); ?>"></i></li>
+                                         <li><i class="fa <?php echo esc_attr($review_item4); ?>"></i></li>
+                                         <li><i class="fa <?php echo esc_attr($review_item5); ?>"></i></li>
                                 </ul>
                                 <div class="mains-comment">
-                                    <p><i class="fa fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mveniam.<i class="fa fa-quote-right"></i> </p>
+                                    <p><i class="fa fa-quote-left"></i><?php echo esc_html($item['description']); ?><i class="fa fa-quote-right"></i> </p>
                                 </div>
-                                <img src="images/testmonial-signeture.png" alt="">
+                                <img src="<?php echo esc_url($item['signature_image']['url']); ?>" alt="<?php echo esc_html($settings['name']); ?>">
                             </div>
                         </div>
                     </div>
                 </div>
-        <?php
-        endforeach; ?>
+        <?php endforeach; ?>
 
             </div>
             <div class="swiper-pagination"></div>
