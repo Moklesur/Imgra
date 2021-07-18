@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
  *
  * @since 1.0.0
  */
-class imgra_testimonial extends \Elementor\Widget_Base
+class imgra_stories extends \Elementor\Widget_Base
 {
 
     /**
@@ -27,7 +27,7 @@ class imgra_testimonial extends \Elementor\Widget_Base
 
     public function get_name()
     {
-        return 'imgra_testimonial';
+        return 'imgra_stories';
     }
 
     /**
@@ -43,7 +43,7 @@ class imgra_testimonial extends \Elementor\Widget_Base
 
     public function get_title()
     {
-        return __('Imgra Testimonial', 'imgra');
+        return __('Imgra Stories', 'imgra');
     }
 
     /**
@@ -59,7 +59,7 @@ class imgra_testimonial extends \Elementor\Widget_Base
 
     public function get_icon()
     {
-        return 'eicon-testimonial-carousel';
+        return 'eicon-preferences';
     }
 
     /**
@@ -135,45 +135,30 @@ class imgra_testimonial extends \Elementor\Widget_Base
             ]
         );
 
-        // Occupation
 
+        // Start Date
         $repeater->add_control(
-            'position',
+            'start_date',
             [
-                'label' => __('Occupation', 'imgra'),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'label_block' => true,
-                'default' => __('Designer', 'imgra')
+                'label' => __( 'Start Date', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::NUMBER,
+                'min' => 100,
+                'max' => 50000,
+                'step' => 100,
+                'default' => 2000
             ]
         );
 
-        // Occupation
-
+        // Start Date
         $repeater->add_control(
-            'sub_heading',
+            'end_date',
             [
-                'label' => __('Sub Heading', 'imgra'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'label_block' => true,
-                'default' => __('Dummy text of the printing and typesetting industr', 'imgra')
-            ]
-        );
-
-        // Rating
-
-        $repeater->add_control(
-            'review_rate',
-            [
-                'label' => __( 'Choose Your Rating', 'imgra' ),
-                'type' => \Elementor\Controls_Manager::SELECT,
-                'default' => '0',
-                'options' => [
-                    '1'  => __( '1', 'imgra' ),
-                    '2' => __( '2', 'imgra' ),
-                    '3' => __( '3', 'imgra' ),
-                    '4' => __( '4', 'imgra' ),
-                    '5' => __( '5', 'imgra' ),
-                ],
+                'label' => __( 'End Date', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::NUMBER,
+                'min' => 100,
+                'max' => 50000,
+                'step' => 100,
+                'default' => 2010
             ]
         );
 
@@ -189,27 +174,9 @@ class imgra_testimonial extends \Elementor\Widget_Base
             ]
         );
 
-        $repeater->add_control(
-            'divSignature',
-            [
-                'type' => \Elementor\Controls_Manager::DIVIDER,
-            ]
-        );
 
-        // Upload Signature
-        $repeater->add_control(
-            'signature_image',
-            [
-                'label' => __('Upload Signature', 'imgra'),
-                'type' => Controls_Manager::MEDIA,
-                'dynamic' => [
-                    'active' => true,
-                ],
-                'default' => [
-                    'url' => Utils::get_placeholder_image_src(),
-                ],
-            ]
-        );
+
+
 
 
         // Repeater
@@ -501,131 +468,62 @@ class imgra_testimonial extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-
-        $autoplay = 'false';
-        if( esc_attr( $settings['autoplay'] ) === 'true' ){
-            $autoplay = '5000';
-        }
-
-        $loop = 'false';
-        if( esc_attr( $settings['loop'] ) === 'true' ){
-            $loop = 'true';
-        }
-
-        $effect = 'slide';
-        if( esc_attr( $settings['effect'] ) === 'true' ){
-            $effect = 'slide';
-        }
-        $paginationClickable = 'false';
-        if( esc_attr( $settings['paginationClickable'] ) === 'true' ){
-            $paginationClickable = 'true';
-        }
-        $speed = '5000';
-        if( esc_attr( $settings['speed']) ){
-            $speed = esc_attr( $settings['speed'] );
-        }
-        $spaceBetween = '25';
-        if( esc_attr( $settings['spaceBetween']) ){
-            $spaceBetween = esc_attr( $settings['spaceBetween'] );
-        }
-
-
         ?>
-        <?php if (!empty($settings['testimonial_list'])) : ?>
-        <div class="swiper-container testimonial-slider" data-swiper-config='{"loop": <?php echo esc_attr( $loop ); ?>, "effect":  <?php echo esc_attr( $effect ); ?>,
-        "speed": <?php echo esc_attr( $speed ); ?>, "autoplay":  <?php echo esc_attr( $autoplay ); ?>, "paginationClickable": <?php echo esc_attr( $paginationClickable ); ?>, "spaceBetween":  <?php echo esc_attr( $spaceBetween ); ?> }' >
-            <div class="swiper-wrapper">
-        <?php foreach ($settings['testimonial_list'] as $item) :
 
 
-            $review_rate = $item['review_rate'];
-            if($review_rate == 1) {
-                $review_item = 'fa-star';
-            }else{
-                $review_item = 'fa-star-half-alt';
-            }
-            if($review_rate == 2) {
-                $review_item = 'fa-star';
-                $review_item2 = 'fa-star';
-            }else{
-                $review_item2 = 'fa-star-half-alt';
-            }
+        <div class="story-box">
+            <div class="row no-gutters justify-content-center">
 
-            if($review_rate == 3) {
-                $review_item = 'fa-star';
-                $review_item2 = 'fa-star';
-                $review_item3 = 'fa-star';
-            }else{
-                $review_item3 = 'fa-star-half-alt';
-            }
-            if($review_rate == 4) {
-                $review_item = 'fa-star';
-                $review_item2 = 'fa-star';
-                $review_item3 = 'fa-star';
-                $review_item4 = 'fa-star';
-            }else{
-                $review_item4 = 'fa-star-half-alt';
-            }
-
-            if($review_rate == 5) {
-                $review_item = 'fa-star';
-                $review_item2 = 'fa-star';
-                $review_item3 = 'fa-star';
-                $review_item4 = 'fa-star';
-                $review_item5 = 'fa-star';
-            }else{
-                $review_item5 = 'fa-star-half-alt';
-            }
-
-            ?>
-                <!-- Single Testimonial -->
-                <div class="swiper-slide testimonial-item">
-                    <div class="row">
-                        <div class="col-8 offset-2 col-sm-5 col-xl-4 offset-sm-0 mb-3 mb-sm-0">
-                            <div class="person-detail">
-                                <div class="person-img">
-                                    <img src="<?php echo esc_url($item['image']['url']); ?>" alt="<?php echo esc_html($settings['name']); ?>">
-                                </div>
-                                <h3><?php echo esc_html($item['name']); ?></h3>
-                                <p><?php echo esc_html($item['position']); ?></p>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-7 col-xl-8">
-                            <div class="person-comment">
-                                <h4><?php echo esc_html($item['sub_heading']); ?></h4>
-                                <ul class="flat-list star">
-                                         <li><i class="fa <?php echo esc_attr($review_item); ?>"></i></li>
-                                         <li><i class="fa <?php echo esc_attr($review_item2); ?>"></i></li>
-                                         <li><i class="fa <?php echo esc_attr($review_item3); ?>"></i></li>
-                                         <li><i class="fa <?php echo esc_attr($review_item4); ?>"></i></li>
-                                         <li><i class="fa <?php echo esc_attr($review_item5); ?>"></i></li>
-                                </ul>
-                                <div class="mains-comment">
-                                    <p><i class="fa fa-quote-left"></i><?php echo esc_html($item['description']); ?><i class="fa fa-quote-right"></i> </p>
-                                </div>
-                                <img src="<?php echo esc_url($item['signature_image']['url']); ?>" alt="<?php echo esc_html($settings['name']); ?>">
-                            </div>
+                <!-- Single Success Story -->
+                <div class="story-item d-sm-flex align-items-sm-center">
+                    <div class="year text-center text-sm-right">
+                        <div class="years year-left">2006 - 2010</div>
+                    </div>
+                    <div class="comment-box">
+                        <div class="story-comment story-comment-right text-left mt-0">
+                            <p>Dummy text of the print and typesettg industry industry.</p>
+                            <img src="images/testimonial-story-1.jpg" alt="">
                         </div>
                     </div>
                 </div>
-        <?php endforeach; ?>
+
+                <!-- Single Success Story -->
+                <div class="story-item d-sm-flex align-items-sm-center">
+                    <div class="year text-center text-sm-right">
+                        <div class="years year-left">2006 - 2010</div>
+                    </div>
+                    <div class="comment-box">
+                        <div class="story-comment story-comment-right text-left mt-0">
+                            <p>Dummy text of the print and typesettg industry industry.</p>
+                            <img src="images/testimonial-story-1.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Success Story -->
+                <div class="story-item d-sm-flex align-items-sm-center">
+                    <div class="year text-center text-sm-right">
+                        <div class="years year-left">2006 - 2010</div>
+                    </div>
+                    <div class="comment-box">
+                        <div class="story-comment story-comment-right text-left mt-0">
+                            <p>Dummy text of the print and typesettg industry industry.</p>
+                            <img src="images/testimonial-story-1.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
 
             </div>
-
-        <?php if( esc_attr( $settings['dot'] ) === 'true' ){?>
-                <div class="swiper-pagination"></div>
-            <?php  } ?>
-
         </div>
 
+
+
+
         <?php
-
-            endif;
-
 
     }
 
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new imgra_testimonial());
+Plugin::instance()->widgets_manager->register_widget_type(new imgra_stories());
