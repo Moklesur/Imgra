@@ -102,7 +102,7 @@ class imgra_circular_progress_bar extends   \Elementor\Widget_Base   {
             [
                 'label' => __('Progress Title', 'imgra'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __('Progress Title', 'imgra'),
+                'default' => __('Creative Mind', 'imgra'),
                 'label_block' => true,
             ]
         );
@@ -130,6 +130,20 @@ class imgra_circular_progress_bar extends   \Elementor\Widget_Base   {
                 'label' => __('Add New Progress Item', 'imgra'),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
+                'default' => [
+                    [
+                        'title' =>  "Creative Mind",
+                        'content' =>  "50",
+                    ],
+                    [
+                        'title' =>  "Business Analysis",
+                        'content' =>  "70",
+                    ],
+                    [
+                        'title' =>  "User Research",
+                        'content' =>  "90",
+                    ]
+                  ],
                 'title_field' => '{{{ title }}}',
             ]
         );
@@ -168,58 +182,6 @@ class imgra_circular_progress_bar extends   \Elementor\Widget_Base   {
                 'toggle' => true,
             ]
         );
-        // Margin
-        $this->add_responsive_control(
-            'margin',
-            [
-                'label' => __( 'Margin', 'imgra' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%', 'em' ],
-                'devices' => [ 'desktop', 'tablet', 'mobile' ],
-                'desktop_default' => [
-                    'size' => 30,
-                    'unit' => 'px',
-                ],
-                'tablet_default' => [
-                    'size' => 30,
-                    'unit' => 'px',
-                ],
-                'mobile_default' => [
-                    'size' => 30,
-                    'unit' => 'px',
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .progress_bar_wrap' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        // Padding
-        $this->add_responsive_control(
-            'padding',
-            [
-                'label' => __( 'Padding', 'imgra' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%', 'em' ],
-                'devices' => [ 'desktop', 'tablet', 'mobile' ],
-                'desktop_default' => [
-                    'size' => 30,
-                    'unit' => 'px',
-                ],
-                'tablet_default' => [
-                    'size' => 30,
-                    'unit' => 'px',
-                ],
-                'mobile_default' => [
-                    'size' => 30,
-                    'unit' => 'px',
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .progress_bar_wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
 
         //Title Style
         $this->add_control(

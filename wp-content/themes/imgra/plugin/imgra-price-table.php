@@ -244,31 +244,7 @@ class imgra_price_table extends \Elementor\Widget_Base
                 'toggle' => true,
             ]
         );
-        // Padding
-        $this->add_responsive_control(
-            'padding',
-            [
-                'label' => __('Padding', 'imgra'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'devices' => ['desktop', 'tablet', 'mobile'],
-                'desktop_default' => [
-                    'size' => 30,
-                    'unit' => 'px',
-                ],
-                'tablet_default' => [
-                    'size' => 30,
-                    'unit' => 'px',
-                ],
-                'mobile_default' => [
-                    'size' => 30,
-                    'unit' => 'px',
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .single-table' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
+
 
         //Background Color
         $this->add_control(

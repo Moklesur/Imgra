@@ -185,7 +185,7 @@ class imgra_testimonial extends \Elementor\Widget_Base
                 'label' => __('Description', 'imgra'),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'label_block' => true,
-                'default' => __(' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mveniam.', 'imgra')
+                'default' => __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mveniam.', 'imgra')
             ]
         );
 
@@ -219,6 +219,53 @@ class imgra_testimonial extends \Elementor\Widget_Base
                 'label' => __('Add New Testimonial', 'imgra'),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
+                'default' => [
+                    [
+                        'image' => Utils::get_placeholder_image_src(),
+                        'name' =>  "Jono",
+                        'position' =>  "Designer",
+                        'sub_heading' =>  "Dummy text of the printing and typesetting industr",
+                        'review_rate' => '0',
+                        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mveniam.',
+                        'signature_image' => Utils::get_placeholder_image_src(),
+                    ],
+                    [
+                        'image' => Utils::get_placeholder_image_src(),
+                        'name' =>  "Jono",
+                        'position' =>  "Designer",
+                        'sub_heading' =>  "Dummy text of the printing and typesetting industr",
+                        'review_rate' => '0',
+                        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mveniam.',
+                        'signature_image' => Utils::get_placeholder_image_src(),
+                    ],
+                    [
+                        'image' => Utils::get_placeholder_image_src(),
+                        'name' =>  "Jono",
+                        'position' =>  "Designer",
+                        'sub_heading' =>  "Dummy text of the printing and typesetting industr",
+                        'review_rate' => '0',
+                        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mveniam.',
+                        'signature_image' => Utils::get_placeholder_image_src(),
+                    ],
+                    [
+                        'image' => Utils::get_placeholder_image_src(),
+                        'name' =>  "Jono",
+                        'position' =>  "Designer",
+                        'sub_heading' =>  "Dummy text of the printing and typesetting industr",
+                        'review_rate' => '0',
+                        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mveniam.',
+                        'signature_image' => Utils::get_placeholder_image_src(),
+                    ],
+                    [
+                        'image' => Utils::get_placeholder_image_src(),
+                        'name' =>  "Jono",
+                        'position' =>  "Designer",
+                        'sub_heading' =>  "Dummy text of the printing and typesetting industr",
+                        'review_rate' => '0',
+                        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mveniam.',
+                        'signature_image' => Utils::get_placeholder_image_src(),
+                    ]
+                ],
                 'title_field' => '{{{ name }}}',
             ]
         );
@@ -331,32 +378,6 @@ class imgra_testimonial extends \Elementor\Widget_Base
             [
                 'label' => __('Style', 'imgra'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        // Padding
-        $this->add_responsive_control(
-            'padding',
-            [
-                'label' => __('Padding', 'imgra'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'devices' => ['desktop', 'tablet', 'mobile'],
-                'desktop_default' => [
-                    'size' => 30,
-                    'unit' => 'px',
-                ],
-                'tablet_default' => [
-                    'size' => 30,
-                    'unit' => 'px',
-                ],
-                'mobile_default' => [
-                    'size' => 30,
-                    'unit' => 'px',
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .team-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
             ]
         );
 

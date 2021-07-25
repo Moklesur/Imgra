@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
  *
  * @since 1.0.0
  */
-class imgra_stories extends \Elementor\Widget_Base
+class imgra_skills extends \Elementor\Widget_Base
 {
 
     /**
@@ -27,7 +27,7 @@ class imgra_stories extends \Elementor\Widget_Base
 
     public function get_name()
     {
-        return 'imgra_stories';
+        return 'imgra_skills';
     }
 
     /**
@@ -43,7 +43,7 @@ class imgra_stories extends \Elementor\Widget_Base
 
     public function get_title()
     {
-        return __('Imgra Stories', 'imgra');
+        return __('Imgra Skills', 'imgra');
     }
 
     /**
@@ -59,7 +59,7 @@ class imgra_stories extends \Elementor\Widget_Base
 
     public function get_icon()
     {
-        return 'eicon-preferences';
+        return 'eicon-elementor';
     }
 
     /**
@@ -91,7 +91,7 @@ class imgra_stories extends \Elementor\Widget_Base
     {
 
         $this->start_controls_section(
-            'story_section',
+            'skills_section',
             [
                 'label' => __('Setting', 'imgra'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
@@ -108,10 +108,21 @@ class imgra_stories extends \Elementor\Widget_Base
             ]
         );
 
+        // title
+        $repeater->add_control(
+            'title',
+            [
+                'label' => __('Title', 'imgra'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'label_block' => true,
+                'default' => __('Immigration Consultency', 'imgra')
+            ]
+        );
+
         $repeater->add_control(
             'image',
             [
-                'label' => __('Choose Image', 'imgra'),
+                'label' => __('Progress Image', 'imgra'),
                 'type' => Controls_Manager::MEDIA,
                 'dynamic' => [
                     'active' => true,
@@ -124,76 +135,52 @@ class imgra_stories extends \Elementor\Widget_Base
 
         // Start Date
         $repeater->add_control(
-            'start_date',
+            'progress_amount',
             [
-                'label' => __( 'Start Date', 'imgra' ),
-                'type' => \Elementor\Controls_Manager::DATE_TIME,
-                'min' => 100,
-                'max' => 50000,
-                'step' => 100,
-                'default' => 2000
-            ]
-        );
-
-        // Start Date
-        $repeater->add_control(
-            'end_date',
-            [
-                'label' => __( 'End Date', 'imgra' ),
-                'type' => \Elementor\Controls_Manager::DATE_TIME,
-                'min' => 100,
-                'max' => 50000,
-                'step' => 100,
-                'default' => 2010
-            ]
-        );
-
-        // Description
-        $repeater->add_control(
-            'description',
-            [
-                'label' => __('Description', 'imgra'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'label_block' => true,
-                'default' => __('Dummy text of the print and typesettg industry industry.', 'imgra')
+                'label' => __( 'Progress Value', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::NUMBER,
+                'min' => 10,
+                'max' => 100,
+                'step' => 5,
+                'default' => 85
             ]
         );
 
         // Repeater
         $this->add_control(
-            'story_list',
+            'skills_list',
             [
-                'label' => __('Add New Story', 'imgra'),
+                'label' => __('Add New Skill', 'imgra'),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
                     [
+                        'title' =>  'Student Consultency',
                         'image' => Utils::get_placeholder_image_src(),
-                        'start_date' =>  date('Y', strtotime('1999-01-01')),
-                        'end_date' => date('Y', strtotime('1999-01-01')),
-                        'description' => 'Dummy text of the print and typesettg industry industry.'
+                        'progress_amount' => 95
                     ],
                     [
+                        'title' =>  'Immigration Consultency',
                         'image' => Utils::get_placeholder_image_src(),
-                        'start_date' => date('Y', strtotime('1999-01-01')),
-                        'end_date' =>  date('Y', strtotime('1999-01-01')),
-                        'description' => 'Dummy text of the print and typesettg industry industry.'
+                        'progress_amount' => 85
                     ],
                     [
+                        'title' =>  'Business Consultency',
                         'image' => Utils::get_placeholder_image_src(),
-                        'start_date' =>  date('Y', strtotime('1999-01-01')),
-                        'end_date' =>  date('Y', strtotime('1999-01-01')),
-                        'description' => 'Dummy text of the print and typesettg industry industry.'
+                        'progress_amount' => 75
                     ],
                     [
+                        'title' =>  'Spouse Consultency',
                         'image' => Utils::get_placeholder_image_src(),
-                        'start_date' =>  date('Y', strtotime('1999-01-01')),
-                        'end_date' => date('Y', strtotime('1999-01-01')),
-                        'description' => 'Dummy text of the print and typesettg industry industry.'
+                        'progress_amount' => 65
+                    ],
+                    [
+                        'title' =>  'Student Loan',
+                        'image' => Utils::get_placeholder_image_src(),
+                        'progress_amount' => 55
                     ]
-
                 ],
-                'title_field' => '{{{ description }}}',
+                'title_field' => '{{{ title }}}',
             ]
         );
 
@@ -201,18 +188,19 @@ class imgra_stories extends \Elementor\Widget_Base
 
         // STYLE Settings
         $this->start_controls_section(
-            'story_style_section',
+            'skills_style_section',
             [
                 'label' => __('Style', 'imgra'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
 
-        //Description Style
+
+        //Title Style
         $this->add_control(
-            'content_style',
+            'title_style',
             [
-                'label' => __('Description', 'imgra'),
+                'label' => __('Title', 'imgra'),
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -224,18 +212,49 @@ class imgra_stories extends \Elementor\Widget_Base
                 'name' => 'content_typography',
                 'label' => __('Typography', 'imgra'),
                 'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} p',
+                'selector' => '{{WRAPPER}} h5',
             ]
         );
 
         $this->add_control(
-            'content_color',
+            'title_color',
             [
                 'label' => __('Text Color', 'imgra'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#000',
+                'default' => '#fff',
                 'selectors' => [
-                    '{{WRAPPER}}  p' => 'color: {{VALUE}}',
+                    '{{WRAPPER}}  h5' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'progress_amount_style',
+            [
+                'label' => __('Progress Amount', 'imgra'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'content_typography',
+                'label' => __('Typography', 'imgra'),
+                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'selector' => '{{WRAPPER}} span',
+            ]
+        );
+
+        $this->add_control(
+            'progress_amount_color',
+            [
+                'label' => __('Text Color', 'imgra'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}}  span' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -257,31 +276,22 @@ class imgra_stories extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
+       if (!empty($settings['skills_list'])) : ?>
 
-       if (!empty($settings['story_list'])) : ?>
+           <div class="skill-box">
 
-        <div class="story-box">
-            <div class="row no-gutters justify-content-center">
-
-
-              <?php foreach ($settings['story_list'] as $item) :?>
-
-                <!-- Single Success Story -->
-                <div class="story-item d-sm-flex align-items-sm-center">
-                    <div class="year text-center text-sm-right">
-                        <div class="years year-left"><?php echo esc_html($item['start_date']); ?> - <?php echo esc_html($item['end_date']); ?></div>
-                    </div>
-                    <div class="comment-box">
-                        <div class="story-comment story-comment-right text-left mt-0">
-                            <p><?php echo esc_html($item['description']); ?></p>
-                            <img src="<?php echo esc_url($item['image']['url']); ?>" alt="story-item">
-                        </div>
-                    </div>
-                </div>
-
-              <?php endforeach; ?>
-
-            </div>
+                  <div class="progressbar-box">
+               <?php foreach ($settings['skills_list'] as $item) :?>
+                      <!-- Single Skill -->
+                      <div class="progressbar-wrapper">
+                          <div class="progress vertical bottom">
+                              <div class="progress-bar six-sec-ease-in-out" data-bg-image="<?php echo esc_url($item['image']['url']); ?>" role="progressbar" data-transitiongoal="<?php echo esc_html($item['progress_amount']); ?>"></div>
+                          </div>
+                          <h5 class="font-size-16"><?php echo esc_html($item['title']); ?></h5>
+                          <span><?php echo esc_html($item['progress_amount']); ?>%</span>
+                      </div>
+               <?php endforeach; ?>
+                  </div>
         </div>
 
         <?php
@@ -290,4 +300,4 @@ class imgra_stories extends \Elementor\Widget_Base
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new imgra_stories());
+Plugin::instance()->widgets_manager->register_widget_type(new imgra_skills());

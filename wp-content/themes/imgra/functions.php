@@ -222,7 +222,6 @@ add_action( 'wp_enqueue_scripts', 'imgra_scripts' );
  * Elementor widgets
  */
 function imgra_elementor_widgets() {
-
     if ( defined('ELEMENTOR_PATH') && class_exists('Elementor\Widget_Base') ) {
         require get_template_directory() . '/plugin/imgra-circular-progress-bar.php';
         require get_template_directory() . '/plugin/imgra-team.php';
@@ -230,6 +229,7 @@ function imgra_elementor_widgets() {
         require get_template_directory() . '/plugin/imgra-slider.php';
         require get_template_directory() . '/plugin/imgra-testimonial.php';
         require get_template_directory() . '/plugin/imgra-stories.php';
+        require get_template_directory() . '/plugin/imgra-skills.php';
     }
 }
 add_action( 'elementor/widgets/widgets_registered', 'imgra_elementor_widgets' );

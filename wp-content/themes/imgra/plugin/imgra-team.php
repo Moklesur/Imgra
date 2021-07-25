@@ -266,32 +266,6 @@ class imgra_team extends \Elementor\Widget_Base
                 'toggle' => true,
             ]
         );
-        // Padding
-        $this->add_responsive_control(
-            'padding',
-            [
-                'label' => __('Padding', 'imgra'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'devices' => ['desktop', 'tablet', 'mobile'],
-                'desktop_default' => [
-                    'size' => 30,
-                    'unit' => 'px',
-                ],
-                'tablet_default' => [
-                    'size' => 30,
-                    'unit' => 'px',
-                ],
-                'mobile_default' => [
-                    'size' => 30,
-                    'unit' => 'px',
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .team-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
 
         //Title Style
         $this->add_control(
