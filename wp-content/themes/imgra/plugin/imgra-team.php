@@ -282,7 +282,7 @@ class imgra_team extends \Elementor\Widget_Base
                 'name' => 'title_typography',
                 'label' => __('Typography', 'imgra'),
                 'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} h4',
+                'selector' => '{{WRAPPER}} h2',
             ]
         );
         $this->add_control(
@@ -292,7 +292,7 @@ class imgra_team extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#fff',
                 'selectors' => [
-                    '{{WRAPPER}} h4' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} h2' => 'color: {{VALUE}}',
                 ],
             ]
         );

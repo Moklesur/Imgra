@@ -905,7 +905,7 @@ img {
 }
 
 .bold,h1,.h2,h2,.h4,h4 {
-	font-weight: 700 !important;
+	font-weight: 700 ;
 }
 
 .bg-image {
@@ -1857,7 +1857,7 @@ body.active #mobile-nav {
 	background-position: center;
 	background-repeat: no-repeat;
 	line-height: 1.2;
-	height: 85vh;
+	height: 85vh !important;
 }
 
 .home-one .banner-caption {
@@ -1926,6 +1926,19 @@ body.active #mobile-nav {
 	height: 3px;
 	background: rgb(255, 173, 24);
 	width: 250px;
+}
+.banner-item .banner-caption.text-left h1::after {
+	left: 7px;
+	right: auto;
+}
+.banner-item .banner-caption.text-center h1::after {
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+}
+.banner-item .banner-caption.text-right h1::after {
+	left: auto;
+	right: 7px;
 }
 
 .banner-item .banner-caption.text-center p {
@@ -6072,7 +6085,7 @@ body.active #mobile-nav {
 	background: #002e5b;
 	font-size: 18px;
 	color: #fff;
-	font-weight: 400 !important;
+	font-weight: 400;
 	line-height: 33px;
 }
 

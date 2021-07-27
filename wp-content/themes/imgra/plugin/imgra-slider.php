@@ -100,13 +100,6 @@ class imgra_slider extends \Elementor\Widget_Base
 
         $repeater = new \Elementor\Repeater();
 
-        $repeater->add_control(
-            'divTitle',
-            [
-                'type' => \Elementor\Controls_Manager::DIVIDER,
-            ]
-        );
-
         // Slider
         $repeater->add_control(
             'divSocial',
@@ -137,7 +130,7 @@ class imgra_slider extends \Elementor\Widget_Base
             [
                 'label' => __('Slider Title', 'imgra'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __('Slider', 'imgra'),
+                'default' => __('Slider Title', 'imgra'),
                 'label_block' => true,
             ]
         );
@@ -164,9 +157,9 @@ class imgra_slider extends \Elementor\Widget_Base
             'content',
             [
                 'label' => __('Slider Description', 'imgra'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'type' => \Elementor\Controls_Manager::WYSIWYG,
                 'label_block' => true,
-                'default' => __('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat incidunt laborum molestias optio sit sunt', 'imgra')
+                'default' => __('<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat incidunt laborum molestias optio sit sunt</p>', 'imgra')
             ]
         );
 
@@ -191,7 +184,7 @@ class imgra_slider extends \Elementor\Widget_Base
 
         // Repeater
         $this->add_control(
-            'list',
+            'slider_list',
             [
                 'label' => __('Add New Slider', 'imgra'),
                 'type' => \Elementor\Controls_Manager::REPEATER,
@@ -199,13 +192,20 @@ class imgra_slider extends \Elementor\Widget_Base
                 'default' => [
                     [
                         'image' => Utils::get_placeholder_image_src(),
-                        'slider_title' => 'Title',
-                        'heading_title' => 'Sub Heading',
-                        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat incidunt laborum molestias optio sit sunt',
+                        'slider_title' => '& Build Confidence',
+                        'heading_title' => 'We Create Value',
+                        'content' => '<p>FiveStar comes with a collection of six astounding and fully customizable. <br>Lorem Ipsum is simply the world dummy text of the printing and typesetting industry.</p>',
+                        'btn_text' => __('EXPLORE MORE', 'imgra'),
+                        'btn_link' => __('https://your-link.com', 'imgra'),
+                    ],
+                    [
+                        'image' => Utils::get_placeholder_image_src(),
+                        'slider_title' => 'in the World',
+                        'heading_title' => 'Welcome to global Consultancy Firm',
+                        'content' => '<p>FiveStar comes with a collection of six astounding and fully customizable. <br>Lorem Ipsum is simply the world dummy text of the printing and typesetting industry.</p>',
                         'btn_text' => __('EXPLORE MORE', 'imgra'),
                         'btn_link' => __('https://your-link.com', 'imgra'),
                     ]
-
                 ],
                 'title_field' => '{{{ slider_title }}}',
             ]
@@ -213,9 +213,99 @@ class imgra_slider extends \Elementor\Widget_Base
 
         $this->end_controls_section();
 
+        // Slider Settings
+
+        $this->start_controls_section(
+            'slider_settings',
+            [
+                'label' => __( 'Slider Settings', 'imgra' ),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+        //Loop
+        $this->add_control(
+            'loop',
+            [
+                'label' => __( 'Loop', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __( 'True', 'imgra' ),
+                'label_off' => __( 'False', 'imgra' ),
+                'return_value' => 'true',
+                'default' => 'true',
+            ]
+        );
+        //Autoplay
+        $this->add_control(
+            'autoplay',
+            [
+                'label' => __( 'Autoplay', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __( 'True', 'imgra' ),
+                'label_off' => __( 'False', 'imgra' ),
+                'return_value' => 'true',
+                'default' => 'true',
+            ]
+        );
+        //effect
+        $this->add_control(
+            'effect',
+            [
+                'label' => __( 'Effect', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __( 'True', 'imgra' ),
+                'label_off' => __( 'False', 'imgra' ),
+                'return_value' => 'true',
+                'default' => 'true',
+            ]
+        );
+        //paginationClickable
+        $this->add_control(
+            'paginationClickable',
+            [
+                'label' => __( 'Pagination Clickable', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __( 'True', 'imgra' ),
+                'label_off' => __( 'False', 'imgra' ),
+                'return_value' => 'true',
+                'default' => 'true',
+            ]
+        );
+
+
+        //Dot
+        $this->add_control(
+            'dot',
+            [
+                'label' => __( 'Dots', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __( 'True', 'imgra' ),
+                'label_off' => __( 'False', 'imgra' ),
+                'return_value' => 'true',
+                'default' => 'true',
+            ]
+        );
+
+        // Speed
+        $this->add_control(
+            'speed',
+            [
+                'label' => __( 'Speed', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::NUMBER,
+                'min' => 100,
+                'max' => 50000,
+                'step' => 100,
+                'default' => 1000
+            ]
+        );
+
+
+
+        $this->end_controls_section();
+
+
         // STYLE Settings
         $this->start_controls_section(
-            'team_style_section',
+            'slider_style_section',
             [
                 'label' => __('Style', 'imgra'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
@@ -241,10 +331,50 @@ class imgra_slider extends \Elementor\Widget_Base
                         'icon' => 'fa fa-align-right',
                     ],
                 ],
-                'default' => 'center',
+                'default' => 'left',
                 'toggle' => true,
             ]
         );
+
+        // Animation
+        $this->add_control(
+            'content_animation',
+            [
+                'label' => __('Select Animation', 'imgra'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'fadeInUp',
+                'options' => [
+                    'flash' => __( 'Flash', 'imgra' ),
+                    'backInUp' => __( 'BackInUp', 'imgra' ),
+                    'backInLeft' => __( 'BackInLeft', 'imgra' ),
+                    'backInRight' => __( 'BackInRight', 'imgra' ),
+                    'backInDown' => __( 'backInDown', 'imgra' ),
+                    'bounceIn' => __( 'BounceIn', 'imgra' ),
+                    'bounceInLeft' => __( 'BounceInLeft', 'imgra' ),
+                    'bounceInRight' => __( 'BounceInRight', 'imgra' ),
+                    'fadeIn' => __( 'FadeIn', 'imgra' ),
+                    'fadeInUp'  => __( 'FadeInUp', 'imgra' ),
+                    'fadeInDown' => __( 'FadeInDown', 'imgra' ),
+                    'fadeInLeft' => __( 'FadeInLeft', 'imgra' ),
+                    'fadeInRight' => __( 'FadeInRight', 'imgra' ),
+                    'fadeInLeft' => __( 'FadeInLeft', 'imgra' ),
+                    'fadeOut' => __( 'FadeOut', 'imgra' ),
+                    'fadeOutUp' => __( 'FadeOutUp', 'imgra' ),
+                    'lightSpeedInRight' => __( 'LightSpeedInRight', 'imgra' ),
+                    'lightSpeedInLeft' => __( 'LightSpeedInLeft', 'imgra' ),
+                    'rollIn' => __( 'RollIn', 'imgra' ),
+                    'jackInTheBox' => __( 'jackInTheBox', 'imgra' ),
+                    'zoomIn' => __( 'ZoomIn', 'imgra' ),
+                    'zoomInDown' => __( 'ZoomInDown', 'imgra' ),
+                    'zoomInUp' => __( 'ZoomInUp', 'imgra' ),
+                    'zoomInLeft' => __( 'ZoomInLeft', 'imgra' ),
+                    'zoomInRight' => __( 'ZoomInRight', 'imgra' ),
+                    'none' => __( 'None', 'imgra' ),
+                ],
+            ]
+        );
+
+
 
         //Title Style
         $this->add_control(
@@ -299,7 +429,7 @@ class imgra_slider extends \Elementor\Widget_Base
             [
                 'label' => __('Text Color', 'imgra'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#fff',
+                'default' => '#ffad18',
                 'selectors' => [
                     '{{WRAPPER}} h2' => 'color: {{VALUE}}',
                 ],
@@ -372,9 +502,9 @@ class imgra_slider extends \Elementor\Widget_Base
             [
                 'label' => __('Hover Color', 'imgra'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#fff',
+                'default' => '#002e5b',
                 'selectors' => [
-                    '{{WRAPPER}} a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} a:hover' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -384,9 +514,9 @@ class imgra_slider extends \Elementor\Widget_Base
             [
                 'label' => __('Background Color', 'imgra'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#fff',
+                'default' => 'transparent',
                 'selectors' => [
-                    '{{WRAPPER}} a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} a' => 'background-color: {{VALUE}}',
                 ],
             ]
         );
@@ -398,10 +528,12 @@ class imgra_slider extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#fff',
                 'selectors' => [
-                    '{{WRAPPER}} a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} a:hover' => 'background-color: {{VALUE}}',
                 ],
             ]
         );
+
+
 
         $this->end_controls_section();
 
@@ -421,40 +553,61 @@ class imgra_slider extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
+        $autoplay = 'false';
+        if( esc_attr( $settings['autoplay'] ) === 'true' ){
+            $autoplay = '5000';
+        }
+
+        $loop = 'false';
+        if( esc_attr( $settings['loop'] ) === 'true' ){
+            $loop = 'true';
+        }
+
+        $effect = 'slide';
+        if( esc_attr( $settings['effect'] ) === 'true' ){
+            $effect = 'slide';
+        }
+        $paginationClickable = 'false';
+        if( esc_attr( $settings['paginationClickable'] ) === 'true' ){
+            $paginationClickable = 'true';
+        }
+        $speed = '800';
+        if( esc_attr( $settings['speed']) ){
+            $speed = esc_attr( $settings['speed'] );
+        }
         ?>
 
-        <?php if (!empty($settings['list'])) : ?>
+        <?php if (!empty($settings['slider_list'])) : ?>
         <!-- Banner Part Start -->
         <section class="banner-part">
             <div class="swiper-container banner-slider home-one"
-                 data-swiper-config='{"loop": true, "effect": "fade", "speed": 800, "autoplay": 5000, "paginationClickable": true }'>
+                 data-swiper-config='{"loop": <?php echo esc_attr( $loop ); ?>, "effect":  <?php echo esc_attr( $effect ); ?>,
+        "speed": <?php echo esc_attr( $speed ); ?>, "autoplay":  <?php echo esc_attr( $autoplay ); ?>, "paginationClickable": <?php echo esc_attr( $paginationClickable ); ?> }'>
                 <div class="swiper-wrapper">
                     <?php
-                    foreach ($settings['list'] as $item) :
+                    foreach ($settings['slider_list'] as $item) :
                         ?>
                         <div class="swiper-slide banner-item"
-                             data-bg-image="<?php echo esc_url($item['image']['url']); ?>">
+                             data-bg-image="<?php echo esc_url($item['image']['url']); ?>" style="background-image:url('<?php echo esc_url($item['image']['url']); ?>')">
                             <div class="container">
                                 <div class="row d-flex justify-content-center">
-                                    <div class="col-xl-12 banner-caption">
-                                        <h2 class="brand-color animated" data-animate="fadeInUp"><?php echo esc_html($item['heading_title']); ?></h2>
-                                        <h1 data-animate="fadeInUp"><?php echo esc_html($item['slider_title']); ?></h1>
+                                    <div class="col-xl-12 banner-caption text-<?php echo esc_attr( $settings['text_alignment'] ); ?>">
+                                        <h2 class="animated" data-animate="<?php echo esc_html($settings['content_animation']); ?>"><?php echo esc_html($item['heading_title']); ?></h2>
+                                        <h1 data-animate="<?php echo esc_html($settings['content_animation']); ?>"><?php echo esc_html($item['slider_title']); ?></h1>
                                         <div class="banner-line"></div>
-                                        <p data-animate="fadeInUp"><?php echo esc_html($item['content']); ?></p>
+                                        <div data-animate="<?php echo esc_html($settings['content_animation']); ?>"><?php echo $item['content']; ?></div>
 
-                                        <a href="#" class="btn-1" data-animate="fadeInUp">EXPLORE MORE</a>
+                                        <a href="<?php echo esc_url($item['btn_text']); ?>" class="btn-1" data-animate="<?php echo esc_html($settings['content_animation']); ?>"><?php echo esc_html($item['btn_text']); ?></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
                     <?php
                     endforeach; ?>
-
-
                 </div>
-                <div class="swiper-pagination"></div>
+                <?php if( esc_attr( $settings['dot'] ) === 'true' ){?>
+                    <div class="swiper-pagination"></div>
+                <?php  } ?>
             </div>
         </section>
         <!-- Banner Part End -->

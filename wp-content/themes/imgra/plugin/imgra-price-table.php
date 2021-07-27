@@ -195,7 +195,7 @@ class imgra_price_table extends \Elementor\Widget_Base
             [
                 'label' => __('Order Title', 'imgra'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __('Order Title', 'imgra'),
+                'default' => __('Order Now', 'imgra'),
                 'label_block' => true,
             ]
         );
