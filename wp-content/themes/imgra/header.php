@@ -30,17 +30,22 @@
     $enable_header_bg = get_theme_mod('enable_header_bg', true);
 
     $enable_header_top = get_theme_mod('enable_header_top', true);
+    $header_top_style = get_theme_mod('header_top_style', 'style1');
     $phone_number_1 = get_theme_mod('phone_number_1', '(124) 784-6532');
     $phone_number_2 = get_theme_mod('phone_number_2', '(001) 854-6532');
     $opening_time = get_theme_mod('opening_time', 'Mn-Fr: 10 am-8 pm');
     $quote_text = get_theme_mod('quote_text', 'Get A Quote');
     $quote_url = get_theme_mod('quote_url', '#');
 
+    $menu_item_color= get_theme_mod('menu_item_color', '#454c4e');
+    $menu_item_hover_color= get_theme_mod('menu_item_hover_color', '#ffad18');
+
     $fb_link = get_theme_mod('fb_link', '#');
     $tw_link = get_theme_mod('tw_link', '#');
     $pi_link = get_theme_mod('pi_link', '#');
     $in_link = get_theme_mod('in_link', '#');
     $g_link = get_theme_mod('g_link', '#');
+
 
     $image_position = get_theme_mod('image_position', 'center center');
     $image_size = get_theme_mod('image_size', 'cover');
@@ -59,7 +64,9 @@
     <?php
     endif;
 
-    if (esc_attr($enable_header_top) == true) :
+    if (esc_attr($enable_header_top) == true ) :
+
+    if (esc_attr($header_top_style) == 'style1' ) :
         ?>
         <!-- Header Part Start -->
         <header id="masthead" class="header-part">
@@ -92,19 +99,19 @@
                             ) : ?>
                                 <ul class="flat-list social-icon d-inline-block">
                                     <?php if (esc_url($fb_link) != '') : ?>
-                                        <li><a href="<?php echo esc_url($fb_link); ?>"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="<?php echo esc_url($fb_link); ?>"><i class="fab fa-facebook"></i></a></li>
                                     <?php endif;
                                     if (esc_url($tw_link) != '') :?>
-                                        <li><a href="<?php echo esc_url($tw_link); ?>"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="<?php echo esc_url($tw_link); ?>"><i class="fab fa-twitter"></i></a></li>
                                     <?php endif;
                                     if (esc_url($pi_link) != '') :?>
-                                        <li><a href="<?php echo esc_url($pi_link); ?>"><i class="fa fa-pinterest"></i></a></li>
+                                        <li><a href="<?php echo esc_url($pi_link); ?>"><i class="fab fa-pinterest"></i></a></li>
                                     <?php endif;
                                     if (esc_url($g_link) != '') :?>
-                                        <li><a href="<?php echo esc_url($g_link); ?>"><i class="fa fa-google"></i></a></li>
+                                        <li><a href="<?php echo esc_url($g_link); ?>"><i class="fab fa-google"></i></a></li>
                                     <?php endif;
                                     if (esc_url($in_link) != '') :?>
-                                        <li><a href="<?php echo esc_url($in_link); ?>"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="<?php echo esc_url($in_link); ?>"><i class="fab fa-linkedin"></i></a></li>
                                     <?php endif; ?>
                                 </ul>
                             <?php endif; ?>
@@ -115,9 +122,78 @@
             </div>
         </header>
         <!-- Header Part End -->
-    <?php
+    <?php else: ?>
+
+        <!-- Header Part Start -->
+        <header class="header-part bg-white header-two">
+            <div class="container">
+                <div class="row d-sm-flex align-items-sm-center">
+                    <?php if (esc_html($phone_number_1) != '') : ?>
+                        <div class="col-lg-4 col-md-4 col-6 text-center text-sm-left">
+                            <div class="header-item">
+                                <p class="pl-0"><i class="fa fa-phone"></i> <span class="d-none d-md-inline-block">Phone: </span>
+                                    <a href="callto::<?php echo esc_html($phone_number_1) ?>"><?php echo esc_html($phone_number_1) ?></a>
+                                </p>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+        <?php if (esc_html($opening_time) != '') : ?>
+                    <div class="col-lg-5 col-md-4 text-center d-none d-md-inline-block">
+                        <div class="header-item">
+                            <p><i class="fa fa-clock-o"></i> <span class="d-none d-lg-inline-block">We are open: </span> <?php echo esc_html($opening_time) ?></p>
+                        </div>
+                    </div>
+        <?php endif; ?>
+                    <div class="col-lg-3 col-md-4 col-6 text-right">
+                        <div class="header-icon">
+                            <?php if (esc_url($fb_link) != '' || esc_url($tw_link) != ''
+                                || esc_url($pi_link) != '' || esc_url($g_link) != ''
+                            ) : ?>
+                                <ul class="flat-list social-icon d-inline-block">
+                                    <?php if (esc_url($fb_link) != '') : ?>
+                                        <li><a href="<?php echo esc_url($fb_link); ?>"><i class="fab fa-facebook"></i></a></li>
+                                    <?php endif;
+                                    if (esc_url($tw_link) != '') :?>
+                                        <li><a href="<?php echo esc_url($tw_link); ?>"><i class="fab fa-twitter"></i></a></li>
+                                    <?php endif;
+                                    if (esc_url($pi_link) != '') :?>
+                                        <li><a href="<?php echo esc_url($pi_link); ?>"><i class="fab fa-pinterest"></i></a></li>
+                                    <?php endif;
+                                    if (esc_url($g_link) != '') :?>
+                                        <li><a href="<?php echo esc_url($g_link); ?>"><i class="fab fa-google"></i></a></li>
+                                    <?php endif;
+                                    if (esc_url($in_link) != '') :?>
+                                        <li><a href="<?php echo esc_url($in_link); ?>"><i class="fab fa-linkedin"></i></a></li>
+                                    <?php endif; ?>
+                                </ul>
+                            <?php endif; ?>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Header Part End -->
+
+   <?php endif;
     endif;
     ?>
+
+
+    <style>
+        .nav-bg-white #nav-list > ul > li > a{
+            color:<?php echo esc_attr($menu_item_color); ?>;
+        }
+
+        .nav-bg-white #nav-list > ul > li > a:hover, .nav-bg-white #nav-list > ul > li.active > a, .nav-bg-white #nav-list > ul > li:hover > a, .nav-bg-white #nav-list > ul > li > a.active{
+            color:<?php  echo esc_attr($menu_item_hover_color); ?>;
+        }
+
+        .nav-bg-white #nav-list > ul > li > a.active::after , .nav-bg-white #nav-list > ul > li > a::after{
+            background:<?php echo esc_attr($menu_item_hover_color); ?>;
+        }
+    </style>
+
     <!-- Navigation Part Start -->
     <nav <?php if (esc_attr(get_theme_mod('enable_sticky', false)) == true) : ?>id="navigation"<?php endif; ?>
          class="navbar navbar-expand-lg nav-bg-white" <?php if (esc_attr($enable_header_bg) == true) : ?>
@@ -228,6 +304,8 @@
         </div>
     </div>
     <!-- Navigation Part End -->
+
+
 
 
 

@@ -371,6 +371,42 @@ function imgra_customize_register( $wp_customize ) {
         )
     );
 
+    $wp_customize->add_setting(
+        'menu_item_color',
+        array(
+            'default' => '#454c4e',
+            'sanitize_callback' => 'sanitize_hex_color',
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'menu_item_color',
+            array(
+                'label' => __('Menu Link Color', 'imgra'),
+                'section' => 'header_general_settings'
+            )
+        )
+    );
+
+    $wp_customize->add_setting(
+        'menu_item_hover_color',
+        array(
+            'default' => '#ffad18',
+            'sanitize_callback' => 'sanitize_hex_color',
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'menu_item_hover_color',
+            array(
+                'label' => __('Menu Link Hover Color', 'imgra'),
+                'section' => 'header_general_settings'
+            )
+        )
+    );
+
     $wp_customize->add_setting('header_padding_top', array(
         'default' => '30',
         'sanitize_callback' => 'absint',
@@ -401,6 +437,25 @@ function imgra_customize_register( $wp_customize ) {
         'section' => 'header_general_settings',
         'description' => 'Enable Header Top Bar'
     ));
+
+    $wp_customize->add_setting( 'header_top_style', array(
+        'default' => 'style1'
+    ));
+    $wp_customize->add_control( new WP_Customize_Control(
+        $wp_customize,
+        'header_top_style',
+        array(
+            'label'      => __( 'Header Top Style', 'imgra' ),
+            'description' => __( 'Choose Header Top Style' ),
+            'settings'   => 'header_top_style',
+            'section'    => 'header_general_settings',
+            'type'    => 'select',
+            'choices' => array(
+                'style1' => 'Style 1',
+                'style2' => 'Style 2'
+            )
+        )
+    ) );
 
     $wp_customize->add_setting('phone_number_1', array(
         'default' => '(124) 784-6532',
