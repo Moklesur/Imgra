@@ -650,6 +650,7 @@ function imgra_customize_register( $wp_customize ) {
     ));
 
 
+
     $wp_customize->add_setting(
         'footer_background_color',
         array(
@@ -668,7 +669,6 @@ function imgra_customize_register( $wp_customize ) {
             )
         )
     );
-
     $wp_customize->add_setting(
         'footer_text_color',
         array(
@@ -683,11 +683,87 @@ function imgra_customize_register( $wp_customize ) {
             array(
                 'label' => __('Footer Text Color', 'imgra'),
                 'section' => 'footer_layout',
-                'priority'   => 5,
+                'priority'   => 1,
             )
         )
     );
 
+
+
+    $wp_customize->add_setting( 'footer_bg_image', array(
+        'default' => "",
+        'sanitize_callback' => 'esc_url_raw'
+    ));
+
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'footer_bg_image', array(
+        'label' => 'Footer Background Image',
+        'priority' => 2,
+        'section' => 'footer_layout',
+        'settings' => 'footer_bg_image'
+    )));
+
+    $wp_customize->add_setting( 'footer_image_repetition', array(
+        'default' => 'repeat'
+    ));
+    $wp_customize->add_control( new WP_Customize_Control(
+        $wp_customize,
+        'footer_image_repetition',
+        array(
+            'label'      => __( 'Background Repetition', 'imgra' ),
+            'description' => __( 'Choose Background Repetition' ),
+            'settings'   => 'footer_image_repetition',
+            'priority'   => 3,
+            'section'    => 'footer_layout',
+            'type'    => 'select',
+            'choices' => array(
+                'repeat' => 'Repeat',
+                'no-repeat' => 'No Repeat'
+            )
+        )
+    ) );
+
+
+    $wp_customize->add_setting( 'footer_image_position', array(
+        'default' => 'center center'
+    ));
+    $wp_customize->add_control( new WP_Customize_Control(
+        $wp_customize,
+        'footer_image_position',
+        array(
+            'label'      => __( 'Background Position', 'imgra' ),
+            'description' => __( 'Choose Background Position' ),
+            'settings'   => 'footer_image_position',
+            'priority'   => 4,
+            'section'    => 'footer_layout',
+            'type'    => 'select',
+            'choices' => array(
+                'center center' => 'Center Center',
+                'center left' => 'Center Left',
+                'center top' => 'Center Top',
+                'center right' => 'Center Right',
+            )
+        )
+    ) );
+    $wp_customize->add_setting( 'footer_image_size', array(
+        'default' => 'auto',
+    ));
+    $wp_customize->add_control( new WP_Customize_Control(
+        $wp_customize,
+        'footer_image_size',
+        array(
+            'label'      => __( 'Background Size', 'imgra' ),
+            'description' => __( 'Choose Background Size' ),
+            'settings'   => 'footer_image_size',
+            'priority'   => 5,
+            'section'    => 'footer_layout',
+            'type'    => 'select',
+            'choices' => array(
+                'cover' => 'Cover',
+                'auto' => 'Auto',
+                'contain' => 'Contain'
+            )
+        )
+    ) );
 
 
     $wp_customize->add_setting( 'footer_columns', array(

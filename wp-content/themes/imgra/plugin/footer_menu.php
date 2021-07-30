@@ -80,42 +80,17 @@ class ImgraMenu extends WP_Widget {
     }
 }
 
-class ImgranavMenu extends WP_Widget {
+
+
+class DefalutNavMenu extends WP_Widget {
 
     function __construct() {
         $widget_ops = array( 'description' => __('Use this widget to add one of your custom menu as a link list widget.') );
-        parent::__construct( 'custom_menu_widget-1', __('Imgra Nav Menu'), $widget_ops );
+        parent::__construct( 'custom_menu_widget-2', __('Imgra Default Nav Menu'), $widget_ops );
     }
 
     function widget($args, $instance) {
-        // Get menu
-        $nav_menu = ! empty( $instance['nav_menu'] ) ? wp_get_nav_menu_object( $instance['nav_menu'] ) : false;
-
-        if ( !$nav_menu )
-            return;
-
-        $instance['title'] = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
-
         echo $args['before_widget'];
-
-        if ( !empty($instance['title']) )
-            echo $args['before_title'] . $instance['title'] . $args['after_title'];
-
-
-//        wp_nav_menu( array(
-//            'menu' => $nav_menu,
-//            'container'            => 'div',
-//            'container_class'      => '',
-//            'container_id'         => '',
-//            'container_aria_label' => '',
-//            'menu_class'           => 'footer-widget-link',
-//            'before'               => '',
-//            'after'                => '',
-//            'link_before'          => '<i class="fa fa-angle-double-right"></i>',
-//            'link_after'           => '',
-//            'depth' => 1,
-//        ) );
-
 
         $enable_header_bg = get_theme_mod('enable_header_bg', true);
 
@@ -126,7 +101,6 @@ class ImgranavMenu extends WP_Widget {
         $fb_link = get_theme_mod('fb_link', '#');
         $tw_link = get_theme_mod('tw_link', '#');
         $pi_link = get_theme_mod('pi_link', '#');
-
 
 
         $image_position = get_theme_mod('image_position', 'center center');
@@ -178,9 +152,10 @@ class ImgranavMenu extends WP_Widget {
                 </div><!-- .site-branding -->
 
                 <?php
-
+//                echo "<pre>";
+//                var_dump( $menu_id);
                 wp_nav_menu(array(
-                    'theme_location' => $nav_menu->slug,
+                    'theme_location' => "primary",
                     'depth' => 2,
                     'container' => 'div',
                     'container_class' => 'collapse navbar-collapse',
@@ -213,7 +188,7 @@ class ImgranavMenu extends WP_Widget {
 
                 <?php
                 wp_nav_menu(array(
-                    'theme_location' => $nav_menu->slug,
+                    'theme_location' => 'primary',
                     'depth' => 2,
                     'container' => 'div',
                     'container_class' => '',
@@ -268,36 +243,6 @@ class ImgranavMenu extends WP_Widget {
 
     }
 
-    function update( $new_instance, $old_instance ) {
-        $instance['nav_menu'] = (int) $new_instance['nav_menu'];
-        return $instance;
-    }
-
-    function form( $instance ) {
-        $nav_menu = isset( $instance['nav_menu'] ) ? $instance['nav_menu'] : '';
-
-        // Get menus
-        $menus = get_terms( 'nav_menu', array( 'hide_empty' => false ) );
-
-        // If no menus exists, direct the user to go and create some.
-        if ( !$menus ) {
-            echo '<p>'. sprintf( __('No menus have been created yet. <a href="%s">Create some</a>.'), admin_url('nav-menus.php') ) .'</p>';
-            return;
-        }
-        ?>
-        <p>
-            <label for="<?php echo $this->get_field_id('nav_menu'); ?>"><?php _e('Select Menu:'); ?></label>
-            <select id="<?php echo $this->get_field_id('nav_menu'); ?>" name="<?php echo $this->get_field_name('nav_menu'); ?>">
-                <?php
-                foreach ( $menus as $menu ) {
-                    $selected = $nav_menu == $menu->term_id ? ' selected="selected"' : '';
-                    echo '<option'. $selected .' value="'. $menu->term_id .'">'. $menu->name .'</option>';
-                }
-                ?>
-            </select>
-        </p>
-        <?php
-    }
 }
 
 add_action( 'widgets_init', 'imgra_menu_register_widgets' );
@@ -305,6 +250,6 @@ add_action( 'widgets_init', 'imgra_menu_register_widgets' );
 function imgra_menu_register_widgets() {
 
     register_widget( 'ImgraMenu' );
-    register_widget( 'ImgranavMenu' );
+    register_widget( 'DefalutNavMenu' );
 
 }

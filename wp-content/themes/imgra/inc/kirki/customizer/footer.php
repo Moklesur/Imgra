@@ -174,6 +174,7 @@ imgra_Kirki::add_field('imgra', array(
     'priority' => 60,
 ));
 
+
 // Footer Background Color
 
 imgra_Kirki::add_field('imgra', array(
@@ -207,6 +208,97 @@ imgra_Kirki::add_field('imgra', array(
         ),
     ),
 ));
+
+/**
+ * Footer Background Image
+ */
+imgra_Kirki::add_field( 'imgra', [
+    'type'        => 'image',
+    'settings'    => 'footer_bg_image',
+    'label'       => esc_html__( 'Footer Background Image', 'imgra' ),
+    'description' => esc_html__( 'Footer Background Image', 'imgra' ),
+    'section'     => 'footer_layout',
+    'default'     => '',
+    'transport' => 'auto',
+    'priority' => 11,
+    'output' => array(
+        array(
+            'element' => 'footer .footer-widget',
+            'property' => 'background-image',
+        ),
+    ),
+] );
+
+// Background Image Position
+imgra_Kirki::add_field( 'imgra', [
+    'type'        => 'select',
+    'settings'    => 'footer_image_repetition',
+    'label'       => esc_html__( 'Background Repetition', 'imgra' ),
+    'section'     => 'footer_layout',
+    'default'     => 'repeat',
+    'placeholder' => esc_html__( 'Choose Background Repetition', 'imgra' ),
+    'priority'    => 12,
+    'multiple'    => 1,
+    'choices'     => [
+        'repeat' => esc_html__( 'Repeat', 'imgra' ),
+        'no-repeat' => esc_html__( 'No Repeat', 'imgra' )
+    ],
+    'output' => array(
+        array(
+            'element' => 'footer .footer-widget',
+            'property' => 'background-repeat',
+        ),
+    ),
+] );
+
+// Background Image Position
+imgra_Kirki::add_field( 'imgra', [
+    'type'        => 'select',
+    'settings'    => 'footer_image_position',
+    'label'       => esc_html__( 'Background Position', 'imgra' ),
+    'section'     => 'footer_layout',
+    'default'     => 'center center',
+    'placeholder' => esc_html__( 'Choose Background Position', 'imgra' ),
+    'priority'    => 13,
+    'multiple'    => 1,
+    'choices'     => [
+        'center center' => esc_html__( 'Center Center', 'imgra' ),
+        'center left' => esc_html__( 'Center Left', 'imgra' ),
+        'center top' => esc_html__( 'Center Top', 'imgra' ),
+        'center right' => esc_html__( 'Center Right', 'imgra' ),
+    ],
+    'output' => array(
+        array(
+            'element' => 'footer .footer-widget',
+            'property' => 'background-position',
+        ),
+    ),
+] );
+
+// Background Image Size
+imgra_Kirki::add_field( 'imgra', [
+    'type'        => 'select',
+    'settings'    => 'footer_image_size',
+    'label'       => esc_html__( 'Background Size', 'imgra' ),
+    'section'     => 'footer_layout',
+    'default'     => 'auto',
+    'placeholder' => esc_html__( 'Choose Background Size', 'imgra' ),
+    'priority'    => 15,
+    'multiple'    => 1,
+    'choices'     => [
+        'cover' => esc_html__( 'Cover', 'imgra' ),
+        'auto' => esc_html__( 'Auto', 'imgra' ),
+        'contain' => esc_html__( 'Contain', 'imgra' )
+    ],
+    'output' => array(
+        array(
+            'element' => 'footer .footer-widget',
+            'property' => 'background-size',
+        ),
+    ),
+] );
+
+
 
 imgra_Kirki::add_field('imgra', array(
     'type' => 'color',

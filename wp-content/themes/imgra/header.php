@@ -16,7 +16,6 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="profile" href="https://gmpg.org/xfn/11">
-
     <?php wp_head(); ?>
 </head>
 
@@ -224,7 +223,7 @@
 
             <?php
             wp_nav_menu(array(
-                'theme_location' => 'menu-1',
+                'theme_location' => 'primary',
                 'depth' => 2,
                 'container' => 'div',
                 'container_class' => 'collapse navbar-collapse',
@@ -256,7 +255,7 @@
 
             <?php
             wp_nav_menu(array(
-                'theme_location' => 'menu-1',
+                'theme_location' => 'primary',
                 'depth' => 2,
                 'container' => 'div',
                 'container_class' => '',
