@@ -98,6 +98,21 @@ class imgra_slider extends \Elementor\Widget_Base
             ]
         );
 
+        // slider_type
+        $this->add_control(
+            'slider_type',
+            [
+                'label' => __('Select Slider', 'imgra'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'slider1',
+                'options' => [
+                    'slider1' => __( 'Slider 1 ', 'imgra' ),
+                    'slider2' => __( 'Slider 2', 'imgra' ),
+                ],
+            ]
+        );
+
+
         $repeater = new \Elementor\Repeater();
 
         // Slider
@@ -211,6 +226,54 @@ class imgra_slider extends \Elementor\Widget_Base
             ]
         );
 
+
+
+            // Form Content
+        $this->add_control(
+            'divContent2',
+            [
+                'type' => \Elementor\Controls_Manager::DIVIDER,
+            ]
+        );
+
+        $this->add_control(
+            'form_title',
+            [
+                'label' => __('Form Title', 'imgra'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => __('CONSULTATION', 'imgra'),
+                'label_block' => true,
+            ]
+        );
+
+        //  Sub Title
+        $this->add_control(
+            'form_heading',
+            [
+                'label' => __('Sub Heading', 'imgra'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => __('FREE', 'imgra'),
+                'label_block' => true,
+            ]
+        );
+
+        // Content
+        $this->add_control(
+            'divContent3',
+            [
+                'type' => \Elementor\Controls_Manager::DIVIDER,
+            ]
+        );
+        $this->add_control(
+            'form_content',
+            [
+                'label' => __('Form Content', 'imgra'),
+                'type' => \Elementor\Controls_Manager::WYSIWYG,
+                'label_block' => true,
+                'default' => __('<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>[contact-form-7 id="1373" title="Consult Form"]', 'imgra')
+            ]
+        );
+
         $this->end_controls_section();
 
         // Slider Settings
@@ -285,6 +348,8 @@ class imgra_slider extends \Elementor\Widget_Base
             ]
         );
 
+
+
         // Speed
         $this->add_control(
             'speed',
@@ -295,6 +360,20 @@ class imgra_slider extends \Elementor\Widget_Base
                 'max' => 50000,
                 'step' => 100,
                 'default' => 1000
+            ]
+        );
+
+
+            //crossFade
+        $this->add_control(
+            'crossFade',
+            [
+                'label' => __( 'CrossFade', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __( 'True', 'imgra' ),
+                'label_off' => __( 'False', 'imgra' ),
+                'return_value' => 'true',
+                'default' => 'true',
             ]
         );
 
@@ -373,8 +452,6 @@ class imgra_slider extends \Elementor\Widget_Base
                 ],
             ]
         );
-
-
 
         //Title Style
         $this->add_control(
@@ -533,6 +610,120 @@ class imgra_slider extends \Elementor\Widget_Base
             ]
         );
 
+        //Form Title Style
+        $this->add_control(
+            'form_title_style',
+            [
+                'label' => __('Form Title', 'imgra'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'form_title_typography',
+                'label' => __('Typography', 'imgra'),
+                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'selector' => '{{WRAPPER}} .banner-contact h2',
+            ]
+        );
+        $this->add_control(
+            'form_title_color',
+            [
+                'label' => __('Text Color', 'imgra'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#ffad18',
+                'selectors' => [
+                    '{{WRAPPER}} .banner-contact h2' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        //Sub Title Style
+        $this->add_control(
+            'form_heading_title_style',
+            [
+                'label' => __('Form Sub Heading', 'imgra'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'form_heading_typography',
+                'label' => __('Typography', 'imgra'),
+                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'selector' => '{{WRAPPER}} .banner-contact h2 span',
+            ]
+        );
+        $this->add_control(
+            'form_heading_color',
+            [
+                'label' => __('Text Color', 'imgra'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#002e5b',
+                'selectors' => [
+                    '{{WRAPPER}} .banner-contact h2 span' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        //Content Style
+        $this->add_control(
+            'form_content_style',
+            [
+                'label' => __('Form Content', 'imgra'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'form_content_typography',
+                'label' => __('Typography', 'imgra'),
+                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'selector' => '{{WRAPPER}} .banner-contact p',
+            ]
+        );
+        $this->add_control(
+            'form_content_color',
+            [
+                'label' => __('Text Color', 'imgra'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#0f0e0e',
+                'selectors' => [
+                    '{{WRAPPER}} .banner-contact p' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'dot_color',
+            [
+                'label' => __('Dot Color', 'imgra'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} .swiper-pagination-bullet' => 'background: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'dot_actie_color',
+            [
+                'label' => __('Dot Active Color', 'imgra'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#ffad18',
+                'selectors' => [
+                    '{{WRAPPER}} .swiper-pagination-bullet-active' => 'background: {{VALUE}}',
+                ],
+            ]
+        );
+
 
 
         $this->end_controls_section();
@@ -553,6 +744,7 @@ class imgra_slider extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
+
         $autoplay = 'false';
         if( esc_attr( $settings['autoplay'] ) === 'true' ){
             $autoplay = '5000';
@@ -561,6 +753,11 @@ class imgra_slider extends \Elementor\Widget_Base
         $loop = 'false';
         if( esc_attr( $settings['loop'] ) === 'true' ){
             $loop = 'true';
+        }
+
+        $crossFade = 'false';
+        if( esc_attr( $settings['crossFade'] ) === 'true' ){
+            $crossFade = 'true';
         }
 
         $effect = 'slide';
@@ -578,6 +775,7 @@ class imgra_slider extends \Elementor\Widget_Base
         ?>
 
         <?php if (!empty($settings['slider_list'])) : ?>
+        <?php if (esc_html($settings['slider_type'] == 'slider1')): ?>
         <!-- Banner Part Start -->
         <section class="banner-part">
             <div class="swiper-container banner-slider home-one"
@@ -611,8 +809,59 @@ class imgra_slider extends \Elementor\Widget_Base
             </div>
         </section>
         <!-- Banner Part End -->
+
+        <?php  else: ?>
+            <!-- Banner Part Start -->
+            <section class="banner-3-part">
+                <div class="swiper-container banner-slider-3" data-swiper-config='{"loop": <?php echo esc_attr( $loop ); ?>, "effect":  <?php echo esc_attr( $effect ); ?>,
+        "speed": <?php echo esc_attr( $speed ); ?>, "autoplay":  <?php echo esc_attr( $autoplay ); ?>,
+        "paginationClickable": <?php echo esc_attr( $paginationClickable );?>, "crossFade": <?php echo esc_attr( $crossFade ); ?> }'>
+                    <div class="swiper-wrapper">
+
+            <?php  foreach ($settings['slider_list'] as $item) :   ?>
+                        <!-- Single Slider -->
+                        <div class="swiper-slide banner-3-item" data-bg-image="<?php echo esc_url($item['image']['url']); ?>" style="background-image:url('<?php echo esc_url($item['image']['url']); ?>')">
+                            <div class="container">
+                                <div class="row d-flex">
+                                    <div class="col-xl-7 col-md-6">
+                                        <div class="banner-caption text-<?php echo esc_attr( $settings['text_alignment'] ); ?>">
+                                            <h2 class="animated" data-animate="<?php echo esc_html($settings['content_animation']); ?>"><?php echo esc_html($item['heading_title']); ?></h2>
+                                            <h1 data-animate="<?php echo esc_html($settings['content_animation']); ?>"><?php echo esc_html($item['slider_title']); ?></h1>
+                                            <div data-animate="<?php echo esc_html($settings['content_animation']); ?>"><?php echo $item['content']; ?></div>
+                                            <a href="<?php echo esc_url($item['btn_text']); ?>" class="btn-1" data-animate="<?php echo esc_html($settings['content_animation']); ?>"><?php echo esc_html($item['btn_text']); ?></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Slider -->
+            <?php endforeach; ?>
+
+                    </div>
+                    <!-- Add Pagination -->
+                    <?php if( esc_attr( $settings['dot'] ) === 'true' ){?>
+                        <div class="swiper-pagination"></div>
+                    <?php  } ?>
+                </div>
+
+               <?php if (esc_html($settings['slider_type'] != 'slider1')): ?>
+                <div class="banner-overlay-form">
+                    <div class="container">
+                        <div class="row">
+                            <div class="banner-contact">
+                                <h2><span><?php echo esc_html( $settings['form_heading']); ?></span><?php echo esc_html( $settings['form_title']); ?></h2>
+                                <?php echo $settings['form_content']; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php endif;?>
+
+            </section>
+            <!-- Banner Part End -->
     <?php
-    endif;
+     endif;
+      endif;
 
     }
 

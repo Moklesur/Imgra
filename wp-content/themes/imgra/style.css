@@ -2515,6 +2515,25 @@ body.active #mobile-nav {
 	top: 170px;
 	left: 10px;
 }
+.banner-3-part .banner-3-item .banner-caption.text-center{
+	position: absolute;
+	top: 170px;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.banner-3-part .banner-3-item .banner-caption.text-right {
+	position: absolute;
+	top: 170px;
+	left: auto;
+	right: 10;
+}
+
+.banner-3-part .banner-caption.text-center p{
+	margin: 0 auto;
+}
 
 .banner-3-part .banner-3-item::after {
 	position: absolute;
@@ -2686,6 +2705,9 @@ body.active #mobile-nav {
 	max-width: 360px;
 	margin: auto;
 	padding: 40px 0 25px;
+}
+.banner-contact form p {
+	padding: 0 !important;
 }
 
 .banner-contact form {

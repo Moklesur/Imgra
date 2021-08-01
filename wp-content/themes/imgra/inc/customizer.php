@@ -649,8 +649,6 @@ function imgra_customize_register( $wp_customize ) {
         'priority' => 20
     ));
 
-
-
     $wp_customize->add_setting(
         'footer_background_color',
         array(
@@ -764,8 +762,7 @@ function imgra_customize_register( $wp_customize ) {
             )
         )
     ) );
-
-
+    
     $wp_customize->add_setting( 'footer_columns', array(
         'default' => 'four',
     ));
