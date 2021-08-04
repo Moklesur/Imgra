@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
  *
  * @since 1.0.0
  */
-class imgra_team extends \Elementor\Widget_Base
+class imgra_team_slider extends \Elementor\Widget_Base
 {
 
     /**
@@ -27,7 +27,7 @@ class imgra_team extends \Elementor\Widget_Base
 
     public function get_name()
     {
-        return 'imgra_team';
+        return 'imgra_team_slider';
     }
 
     /**
@@ -43,7 +43,7 @@ class imgra_team extends \Elementor\Widget_Base
 
     public function get_title()
     {
-        return __('Imgra Team', 'imgra');
+        return __('Imgra Team Slider', 'imgra');
     }
 
     /**
@@ -59,7 +59,7 @@ class imgra_team extends \Elementor\Widget_Base
 
     public function get_icon()
     {
-        return 'eicon-person';
+        return 'eicon-post-slider';
     }
 
     /**
@@ -98,22 +98,10 @@ class imgra_team extends \Elementor\Widget_Base
             ]
         );
 
-        // slider_type
-        $this->add_control(
-            'team_type',
-            [
-                'label' => __('Select Team Style', 'imgra'),
-                'type' => \Elementor\Controls_Manager::SELECT,
-                'default' => 'style1',
-                'options' => [
-                    'style1' => __( 'Style 1 ', 'imgra' ),
-                    'style2' => __( 'Style 2', 'imgra' ),
-                ],
-            ]
-        );
 
+        $repeater = new \Elementor\Repeater();
 
-        $this->add_control(
+        $repeater->add_control(
             'image',
             [
                 'label' => __('Choose Image', 'elementor'),
@@ -130,7 +118,7 @@ class imgra_team extends \Elementor\Widget_Base
 
         // Title
 
-        $this->add_control(
+        $repeater->add_control(
             'title',
             [
                 'label' => __('Name', 'imgra'),
@@ -140,13 +128,13 @@ class imgra_team extends \Elementor\Widget_Base
             ]
         );
         // Content
-        $this->add_control(
+        $repeater->add_control(
             'divContent',
             [
                 'type' => \Elementor\Controls_Manager::DIVIDER,
             ]
         );
-        $this->add_control(
+        $repeater->add_control(
             'content',
             [
                 'label' => __('Position', 'imgra'),
@@ -155,8 +143,6 @@ class imgra_team extends \Elementor\Widget_Base
                 'default' => __('Designer', 'imgra')
             ]
         );
-
-        $repeater = new \Elementor\Repeater();
 
         // Social Links
         $repeater->add_control(
@@ -167,31 +153,84 @@ class imgra_team extends \Elementor\Widget_Base
                 'separator' => 'before',
             ]
         );
-        // Social Title
-        $repeater->add_control(
-            'social_title',
-            [
-                'label' => __('Title', 'imgra'),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __('Facebook', 'imgra'),
-                'label_block' => true,
-            ]
-        );
 
         // Social Links 1
         $repeater->add_control(
-            'icon',
+            'icon_facebook',
             [
                 'label' => __('Icon', 'imgra'),
                 'type' => \Elementor\Controls_Manager::ICONS,
                 'default' => [
-                    'value' => 'fas fa-star',
+                    'value' => 'fab fa-facebook',
                     'library' => 'solid',
                     ]
             ]
         );
         $repeater->add_control(
-            'icon_link',
+            'icon_link_facebook',
+            [
+                'label' => __('Link', 'imgra'),
+                'type' => \Elementor\Controls_Manager::URL,
+                'placeholder' => __('https://your-link.com', 'imgra')
+            ]
+        );
+
+        // Social Links 1
+        $repeater->add_control(
+            'icon_twitter',
+            [
+                'label' => __('Icon', 'imgra'),
+                'type' => \Elementor\Controls_Manager::ICONS,
+                'default' => [
+                    'value' => 'fab fa-twitter',
+                    'library' => 'solid',
+                ]
+            ]
+        );
+        $repeater->add_control(
+            'icon_link_twitter',
+            [
+                'label' => __('Link', 'imgra'),
+                'type' => \Elementor\Controls_Manager::URL,
+                'placeholder' => __('https://your-link.com', 'imgra')
+            ]
+        );
+
+        // Social Links 1
+        $repeater->add_control(
+            'icon_instagram',
+            [
+                'label' => __('Icon', 'imgra'),
+                'type' => \Elementor\Controls_Manager::ICONS,
+                'default' => [
+                    'value' => 'fab fa-instagram',
+                    'library' => 'solid',
+                ]
+            ]
+        );
+        $repeater->add_control(
+            'icon_link_instagram',
+            [
+                'label' => __('Link', 'imgra'),
+                'type' => \Elementor\Controls_Manager::URL,
+                'placeholder' => __('https://your-link.com', 'imgra')
+            ]
+        );
+
+        // Social Links 1
+        $repeater->add_control(
+            'icon_linkedin',
+            [
+                'label' => __('Icon', 'imgra'),
+                'type' => \Elementor\Controls_Manager::ICONS,
+                'default' => [
+                    'value' => 'fab fa-linkedin-in',
+                    'library' => 'solid',
+                ]
+            ]
+        );
+        $repeater->add_control(
+            'icon_link_linkedin',
             [
                 'label' => __('Link', 'imgra'),
                 'type' => \Elementor\Controls_Manager::URL,
@@ -201,9 +240,9 @@ class imgra_team extends \Elementor\Widget_Base
 
         // Repeater
         $this->add_control(
-            'list',
+            'team_list',
             [
-                'label' => __('Add New Social Item', 'imgra'),
+                'label' => __('Add New Item', 'imgra'),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
@@ -253,7 +292,7 @@ class imgra_team extends \Elementor\Widget_Base
                     ],
 
                 ],
-                'title_field' => '{{{ social_title }}}',
+                'title_field' => '{{{ title }}}',
             ]
         );
 
@@ -366,9 +405,20 @@ class imgra_team extends \Elementor\Widget_Base
             [
                 'label' => __('Color', 'imgra'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#ffad18',
+                'default' => '#fff',
                 'selectors' => [
                     '{{WRAPPER}} i' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'icon_hover_color',
+            [
+                'label' => __('Color Hover', 'imgra'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} i:hover' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -391,94 +441,74 @@ class imgra_team extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        if (esc_html($settings['team_type'] == 'style1')):
         ?>
+        <?php if (!empty($settings['team_list'])) : ?>
+        <div class="swiper-container team-3-slider" data-swiper-config='{"loop": true, "effect": "slide", "speed": 800, "autoplay": 5000, "paginationClickable": true,"slidesPerView" : 3 ,"spaceBetween": 30,"breakpoints": { "500": { "slidesPerView": 1},"768": { "slidesPerView": 2 }}}'>
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
 
-        <div class="team-item">
-                <div class="team-img text-<?php echo esc_attr( $settings['text_alignment'] ); ?>">
-                    <?php
-                    if (!empty($settings['image']['url'])) :?>
-                        <img src="<?php echo esc_url($settings['image']['url']); ?>"
-                             alt="<?php echo esc_html($settings['title']); ?>">
-                    <?php endif; ?>
+        <?php foreach ($settings['team_list'] as $item) :?>
 
-                    <div class="team-member-name text-<?php echo esc_attr( $settings['text_alignment'] ); ?>">
-
-                        <h2><?php echo esc_html($settings['title']); ?></h2>
-
-                        <div class="team-member-des text-<?php echo esc_attr( $settings['text_alignment'] ); ?>">
-                            <p><?php echo esc_html($settings['content']); ?></p>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-            <?php if (!empty($settings['list'])) : ?>
-                <div class="team-social text-<?php echo esc_attr( $settings['text_alignment'] ); ?>">
-                    <ul class="flat-list">
-                        <?php
-                        foreach ($settings['list'] as $item) :
-                            if (!empty($item['icon_link']['url']) || !empty($item['icon'])) :?>
-                                <li>
-                                    <a href="<?php echo esc_url($item['icon_link']['url']); ?>">
-                                        <?php \Elementor\Icons_Manager::render_icon( $item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
-                                    </a>
-                                </li>
-                            <?php endif;
-
-                            endforeach; ?>
-
-                    </ul>
-                </div>
-            <?php endif; ?>
-
-        </div>
-
-        <?php  else: ?>
-
-                    <div class="team-2-item text-<?php echo esc_attr( $settings['text_alignment'] ); ?>">
+                <!-- Single Exprt Slider  -->
+                <div class="swiper-slide">
+                    <div class="team-2-item text-<?php echo esc_attr( $item['text_alignment'] ); ?>">
                         <div class="team-2-img">
                             <?php
-                            if (!empty($settings['image']['url'])) :?>
-                                <img src="<?php echo esc_url($settings['image']['url']); ?>"
-                                     alt="<?php echo esc_html($settings['title']); ?>">
+                            if (!empty($item['image']['url'])) :?>
+                                <img src="<?php echo esc_url($item['image']['url']); ?>"
+                                     alt="<?php echo esc_html($item['title']); ?>">
                             <?php endif; ?>
-
-            <?php if (!empty($settings['list'])) : ?>
                             <div class="team-2-social">
                                 <ul>
-                                    <?php
-                                    foreach ($settings['list'] as $item) :
-                                        if (!empty($item['icon_link']['url']) || !empty($item['icon'])) :?>
-                                            <li>
-                                                <a href="<?php echo esc_url($item['icon_link']['url']); ?>">
-                                                    <?php \Elementor\Icons_Manager::render_icon( $item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
-                                                </a>
-                                            </li>
-                                        <?php endif;
+                                    <?php if (!empty($item['icon_link_facebook']['url']) || !empty($item['icon_facebook'])) :?>
+                                        <li>
+                                            <a href="<?php echo esc_url($item['icon_link_facebook']['url']); ?>">
+                                                <?php \Elementor\Icons_Manager::render_icon( $item['icon_facebook'], [ 'aria-hidden' => 'true' ] ); ?>
+                                            </a>
+                                        </li>
+                                    <?php endif; ?>
 
-                                    endforeach; ?>
+                                    <?php if (!empty($item['icon_link_twitter']['url']) || !empty($item['icon_twitter'])) :?>
+                                        <li>
+                                            <a href="<?php echo esc_url($item['icon_link_twitter']['url']); ?>">
+                                                <?php \Elementor\Icons_Manager::render_icon( $item['icon_twitter'], [ 'aria-hidden' => 'true' ] ); ?>
+                                            </a>
+                                        </li>
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($item['icon_link_instagram']['url']) || !empty($item['icon_instagram'])) :?>
+                                        <li>
+                                            <a href="<?php echo esc_url($item['icon_link_instagram']['url']); ?>">
+                                                <?php \Elementor\Icons_Manager::render_icon( $item['icon_instagram'], [ 'aria-hidden' => 'true' ] ); ?>
+                                            </a>
+                                        </li>
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($item['icon_link_linkedin']['url']) || !empty($item['icon_linkedin'])) :?>
+                                        <li>
+                                            <a href="<?php echo esc_url($item['icon_link_linkedin']['url']); ?>">
+                                                <?php \Elementor\Icons_Manager::render_icon( $item['icon_linkedin'], [ 'aria-hidden' => 'true' ] ); ?>
+                                            </a>
+                                        </li>
+                                    <?php endif; ?>
                                 </ul>
                             </div>
-            <?php endif; ?>
                         </div>
-                        <div class="team-2-des ">
-                            <h4><?php echo esc_html($settings['title']); ?></h4>
-                            <p><?php echo esc_html($settings['content']); ?></p>
+                        <div class="team-2-des">
+                            <h4><?php echo esc_html($item['title']); ?></h4>
+                            <p><?php echo esc_html($item['content']); ?></p>
                         </div>
                     </div>
+                </div>
+                <!-- Single Exprt Slider  -->
 
-<?php
+              <?php  endforeach; ?>
 
-  endif;
+            </div>
+        </div>
+    <?php endif; ?>
 
-    }
-
-
-
-
+    <?php }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new imgra_team());
+Plugin::instance()->widgets_manager->register_widget_type(new imgra_team_slider());

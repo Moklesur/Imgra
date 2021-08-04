@@ -230,6 +230,7 @@ function imgra_elementor_widgets() {
         require get_template_directory() . '/plugin/imgra-testimonial.php';
         require get_template_directory() . '/plugin/imgra-stories.php';
         require get_template_directory() . '/plugin/imgra-skills.php';
+        require get_template_directory() . '/plugin/imgra-team-slider.php';
     }
 }
 add_action( 'elementor/widgets/widgets_registered', 'imgra_elementor_widgets' );
