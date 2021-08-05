@@ -779,7 +779,7 @@ class imgra_slider extends \Elementor\Widget_Base
         <!-- Banner Part Start -->
         <section class="banner-part">
             <div class="swiper-container banner-slider home-one"
-                 data-swiper-config='{"loop": <?php echo esc_attr( $loop ); ?>, "effect":  <?php echo esc_attr( $effect ); ?>,
+                 data-swiper-config='{"loop": <?php echo esc_attr( $loop ); ?>, "effect": "<?php echo esc_attr( $effect ); ?>",
         "speed": <?php echo esc_attr( $speed ); ?>, "autoplay":  <?php echo esc_attr( $autoplay ); ?>, "paginationClickable": <?php echo esc_attr( $paginationClickable ); ?> }'>
                 <div class="swiper-wrapper">
                     <?php

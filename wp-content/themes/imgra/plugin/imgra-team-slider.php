@@ -247,52 +247,247 @@ class imgra_team_slider extends \Elementor\Widget_Base
                 'fields' => $repeater->get_controls(),
                 'default' => [
                     [
-                        'social_title' => 'Facebook',
-                        'icon' => [
+                        'title' => 'Jono',
+                        'content' => 'Designer',
+                        'icon_facebook' => [
                             'type' => \Elementor\Controls_Manager::ICON,
                             'value' => 'fab fa-facebook-f'
                         ],
-                        'icon_link' => __( 'https://your-link.com', 'imgra' ),
-                    ],
-                    [
-                        'social_title' => 'Twitter',
-                        'icon' => [
+                        'icon_link_facebook' => __( 'https://your-link.com', 'imgra' ),
+                        'icon_twitter' => [
                             'type' => \Elementor\Controls_Manager::ICON,
                             'value' => 'fab fa-twitter',
                             'library' => 'solid',
                         ],
-                        'icon_link' => __( 'https://your-link.com', 'imgra' ),
-                    ],
-                    [
-                        'social_title' => 'Pinterest',
-                        'icon' => [
-                            'type' => \Elementor\Controls_Manager::ICON,
-                            'value' => 'fab fa-pinterest',
-                            'library' => 'solid',
-                        ],
-                        'icon_link' => __( 'https://your-link.com', 'imgra' ),
-                    ],
-                    [
-                        'social_title' => 'Linkedin',
-                        'icon' => [
-                            'type' => \Elementor\Controls_Manager::ICON,
-                            'value' => 'fab fa-linkedin-in',
-                            'library' => 'solid',
-                        ],
-                        'icon_link' => __( 'https://your-link.com', 'imgra' ),
-                    ],
-                    [
-                        'social_title' => 'Instagram',
-                        'icon' => [
+                        'icon_link_twitter' => __( 'https://your-link.com', 'imgra' ),
+                        'icon_instagram' => [
                             'type' => \Elementor\Controls_Manager::ICON,
                             'value' => 'fab fa-instagram',
                             'library' => 'solid',
                         ],
-                        'icon_link' => __( 'https://your-link.com', 'imgra' ),
+                        'icon_link_instagram' => __( 'https://your-link.com', 'imgra' ),
+                        'icon_linkedin' => [
+                            'type' => \Elementor\Controls_Manager::ICON,
+                            'value' => 'fab fa-linkedin-in',
+                            'library' => 'solid',
+                        ],
+                        'icon_link_linkedin' => __( 'https://your-link.com', 'imgra' ),
                     ],
-
+                    [
+                        'title' => 'Jono',
+                        'content' => 'Designer',
+                        'icon_facebook' => [
+                            'type' => \Elementor\Controls_Manager::ICON,
+                            'value' => 'fab fa-facebook-f'
+                        ],
+                        'icon_link_facebook' => __( 'https://your-link.com', 'imgra' ),
+                        'icon_twitter' => [
+                            'type' => \Elementor\Controls_Manager::ICON,
+                            'value' => 'fab fa-twitter',
+                            'library' => 'solid',
+                        ],
+                        'icon_link_twitter' => __( 'https://your-link.com', 'imgra' ),
+                        'icon_instagram' => [
+                            'type' => \Elementor\Controls_Manager::ICON,
+                            'value' => 'fab fa-instagram',
+                            'library' => 'solid',
+                        ],
+                        'icon_link_instagram' => __( 'https://your-link.com', 'imgra' ),
+                        'icon_linkedin' => [
+                            'type' => \Elementor\Controls_Manager::ICON,
+                            'value' => 'fab fa-linkedin-in',
+                            'library' => 'solid',
+                        ],
+                        'icon_link_linkedin' => __( 'https://your-link.com', 'imgra' ),
+                    ],
+                    [
+                        'title' => 'Jono',
+                        'content' => 'Designer',
+                        'icon_facebook' => [
+                            'type' => \Elementor\Controls_Manager::ICON,
+                            'value' => 'fab fa-facebook-f'
+                        ],
+                        'icon_link_facebook' => __( 'https://your-link.com', 'imgra' ),
+                        'icon_twitter' => [
+                            'type' => \Elementor\Controls_Manager::ICON,
+                            'value' => 'fab fa-twitter',
+                            'library' => 'solid',
+                        ],
+                        'icon_link_twitter' => __( 'https://your-link.com', 'imgra' ),
+                        'icon_instagram' => [
+                            'type' => \Elementor\Controls_Manager::ICON,
+                            'value' => 'fab fa-instagram',
+                            'library' => 'solid',
+                        ],
+                        'icon_link_instagram' => __( 'https://your-link.com', 'imgra' ),
+                        'icon_linkedin' => [
+                            'type' => \Elementor\Controls_Manager::ICON,
+                            'value' => 'fab fa-linkedin-in',
+                            'library' => 'solid',
+                        ],
+                        'icon_link_linkedin' => __( 'https://your-link.com', 'imgra' ),
+                    ],
+                    [
+                        'title' => 'Jono',
+                        'content' => 'Designer',
+                        'icon_facebook' => [
+                            'type' => \Elementor\Controls_Manager::ICON,
+                            'value' => 'fab fa-facebook-f'
+                        ],
+                        'icon_link_facebook' => __( 'https://your-link.com', 'imgra' ),
+                        'icon_twitter' => [
+                            'type' => \Elementor\Controls_Manager::ICON,
+                            'value' => 'fab fa-twitter',
+                            'library' => 'solid',
+                        ],
+                        'icon_link_twitter' => __( 'https://your-link.com', 'imgra' ),
+                        'icon_instagram' => [
+                            'type' => \Elementor\Controls_Manager::ICON,
+                            'value' => 'fab fa-instagram',
+                            'library' => 'solid',
+                        ],
+                        'icon_link_instagram' => __( 'https://your-link.com', 'imgra' ),
+                        'icon_linkedin' => [
+                            'type' => \Elementor\Controls_Manager::ICON,
+                            'value' => 'fab fa-linkedin-in',
+                            'library' => 'solid',
+                        ],
+                        'icon_link_linkedin' => __( 'https://your-link.com', 'imgra' ),
+                    ],
+                    [
+                        'title' => 'Jono',
+                        'content' => 'Designer',
+                        'icon_facebook' => [
+                            'type' => \Elementor\Controls_Manager::ICON,
+                            'value' => 'fab fa-facebook-f'
+                        ],
+                        'icon_link_facebook' => __( 'https://your-link.com', 'imgra' ),
+                        'icon_twitter' => [
+                            'type' => \Elementor\Controls_Manager::ICON,
+                            'value' => 'fab fa-twitter',
+                            'library' => 'solid',
+                        ],
+                        'icon_link_twitter' => __( 'https://your-link.com', 'imgra' ),
+                        'icon_instagram' => [
+                            'type' => \Elementor\Controls_Manager::ICON,
+                            'value' => 'fab fa-instagram',
+                            'library' => 'solid',
+                        ],
+                        'icon_link_instagram' => __( 'https://your-link.com', 'imgra' ),
+                        'icon_linkedin' => [
+                            'type' => \Elementor\Controls_Manager::ICON,
+                            'value' => 'fab fa-linkedin-in',
+                            'library' => 'solid',
+                        ],
+                        'icon_link_linkedin' => __( 'https://your-link.com', 'imgra' ),
+                    ]
                 ],
                 'title_field' => '{{{ title }}}',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Slider Settings
+
+        $this->start_controls_section(
+            'slider_settings',
+            [
+                'label' => __( 'Slider Settings', 'imgra' ),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+        //Loop
+        $this->add_control(
+            'loop',
+            [
+                'label' => __( 'Loop', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __( 'True', 'imgra' ),
+                'label_off' => __( 'False', 'imgra' ),
+                'return_value' => 'true',
+                'default' => 'true',
+            ]
+        );
+        //Autoplay
+        $this->add_control(
+            'autoplay',
+            [
+                'label' => __( 'Autoplay', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __( 'True', 'imgra' ),
+                'label_off' => __( 'False', 'imgra' ),
+                'return_value' => 'true',
+                'default' => 'true',
+            ]
+        );
+        //effect
+        $this->add_control(
+            'effect',
+            [
+                'label' => __( 'Effect', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __( 'True', 'imgra' ),
+                'label_off' => __( 'False', 'imgra' ),
+                'return_value' => 'true',
+                'default' => 'true',
+            ]
+        );
+        //paginationClickable
+        $this->add_control(
+            'paginationClickable',
+            [
+                'label' => __( 'Pagination Clickable', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __( 'True', 'imgra' ),
+                'label_off' => __( 'False', 'imgra' ),
+                'return_value' => 'true',
+                'default' => 'true',
+            ]
+        );
+
+
+        //Dot
+        $this->add_control(
+            'dot',
+            [
+                'label' => __( 'Dots', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __( 'True', 'imgra' ),
+                'label_off' => __( 'False', 'imgra' ),
+                'return_value' => 'true',
+                'default' => 'true',
+            ]
+        );
+
+
+
+        // Speed
+        $this->add_control(
+            'speed',
+            [
+                'label' => __( 'Speed', 'imgra' ),
+                'type' => \Elementor\Controls_Manager::NUMBER,
+                'min' => 100,
+                'max' => 50000,
+                'step' => 100,
+                'default' => 1000
+            ]
+        );
+
+        $this->add_control(
+            'slidesPerView',
+            [
+                'label' => __('Slider View', 'imgra'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => '3',
+                'options' => [
+                    '1' => __( '1', 'imgra' ),
+                    '2' => __( '2', 'imgra' ),
+                    '3' => __( '3', 'imgra' ),
+                    '4' => __( '4', 'imgra' ),
+                    '5' => __( '5', 'imgra' )
+                ]
             ]
         );
 
@@ -356,7 +551,7 @@ class imgra_team_slider extends \Elementor\Widget_Base
             [
                 'label' => __('Text Color', 'imgra'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#fff',
+                'default' => '#3d3d3d',
                 'selectors' => [
                     '{{WRAPPER}} h2' => 'color: {{VALUE}}',
                 ],
@@ -385,7 +580,7 @@ class imgra_team_slider extends \Elementor\Widget_Base
             [
                 'label' => __('Text Color', 'imgra'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#fff',
+                'default' => '#515050',
                 'selectors' => [
                     '{{WRAPPER}} p' => 'color: {{VALUE}}',
                 ],
@@ -441,17 +636,44 @@ class imgra_team_slider extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
+
+        $autoplay = 'false';
+        if( esc_attr( $settings['autoplay'] ) === 'true' ){
+            $autoplay = '5000';
+        }
+
+        $loop = 'false';
+        if( esc_attr( $settings['loop'] ) === 'true' ){
+            $loop = 'true';
+        }
+
+        $effect = 'slide';
+        if( esc_attr( $settings['effect'] ) === 'true' ){
+            $effect = 'slide';
+        }
+        $paginationClickable = 'false';
+        if( esc_attr( $settings['paginationClickable'] ) === 'true' ){
+            $paginationClickable = 'true';
+        }
+        $speed = '800';
+        if( esc_attr( $settings['speed']) ){
+            $speed = esc_attr( $settings['speed'] );
+        }
+
+//        echo "<pre>";
+//        var_dump($settings['slidesPerView']);
+
         ?>
         <?php if (!empty($settings['team_list'])) : ?>
-        <div class="swiper-container team-3-slider" data-swiper-config='{"loop": true, "effect": "slide", "speed": 800, "autoplay": 5000, "paginationClickable": true,"slidesPerView" : 3 ,"spaceBetween": 30,"breakpoints": { "500": { "slidesPerView": 1},"768": { "slidesPerView": 2 }}}'>
+        <div class="swiper-container team-3-slider"  data-swiper-config='{"loop": <?php echo esc_attr( $loop ); ?>, "effect": "<?php echo esc_attr( $effect ); ?>", "speed":  <?php echo esc_attr( $speed ); ?>, "autoplay": <?php echo esc_attr( $autoplay ); ?>, "paginationClickable": <?php echo esc_attr( $paginationClickable ); ?>,"slidesPerView" : 3, "spaceBetween": 30,"breakpoints": { "500": { "slidesPerView": 1},"768": { "slidesPerView": 2 }}}'>
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
 
-        <?php foreach ($settings['team_list'] as $item) :?>
+             <?php foreach ($settings['team_list'] as $item) :?>
 
                 <!-- Single Exprt Slider  -->
                 <div class="swiper-slide">
-                    <div class="team-2-item text-<?php echo esc_attr( $item['text_alignment'] ); ?>">
+                    <div class="team-2-item text-<?php echo esc_attr( $settings['text_alignment'] ); ?>">
                         <div class="team-2-img">
                             <?php
                             if (!empty($item['image']['url'])) :?>
@@ -505,6 +727,11 @@ class imgra_team_slider extends \Elementor\Widget_Base
               <?php  endforeach; ?>
 
             </div>
+
+            <!-- If we need pagination -->
+            <?php if( esc_attr( $settings['dot'] ) === 'true' ){?>
+                <div class="swiper-pagination"></div>
+            <?php  } ?>
         </div>
     <?php endif; ?>
 
