@@ -660,12 +660,9 @@ class imgra_team_slider extends \Elementor\Widget_Base
             $speed = esc_attr( $settings['speed'] );
         }
 
-//        echo "<pre>";
-//        var_dump($settings['slidesPerView']);
-
         ?>
         <?php if (!empty($settings['team_list'])) : ?>
-        <div class="swiper-container team-3-slider"  data-swiper-config='{"loop": <?php echo esc_attr( $loop ); ?>, "effect": "<?php echo esc_attr( $effect ); ?>", "speed":  <?php echo esc_attr( $speed ); ?>, "autoplay": <?php echo esc_attr( $autoplay ); ?>, "paginationClickable": <?php echo esc_attr( $paginationClickable ); ?>,"slidesPerView" : 3, "spaceBetween": 30,"breakpoints": { "500": { "slidesPerView": 1},"768": { "slidesPerView": 2 }}}'>
+        <div class="swiper-container team-3-slider"  data-swiper-config='{"loop": <?php echo esc_attr( $loop ); ?>, "effect": "<?php echo esc_attr( $effect ); ?>", "speed":  <?php echo esc_attr( $speed ); ?>, "autoplay": <?php echo esc_attr( $autoplay ); ?>, "paginationClickable": <?php echo esc_attr( $paginationClickable ); ?>,"slidesPerView" :  <?php echo esc_html( $settings['slidesPerView'] ); ?>, "spaceBetween": 30,"breakpoints": { "500": { "slidesPerView": 1},"768": { "slidesPerView": 2 }}}'>
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
 

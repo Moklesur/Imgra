@@ -4138,7 +4138,7 @@ body.active #mobile-nav {
 }
 
 .counter-item p {
-	color: #1e1e1e;
+	/*color: #1e1e1e;*/
 	font-weight: 400;
 	font-size: 18px;
 	margin-top: 5px;
