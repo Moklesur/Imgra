@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
  *
  * @since 1.0.0
  */
-class imgra_counter extends \Elementor\Widget_Base
+class imgra_service extends \Elementor\Widget_Base
 {
 
     /**
@@ -27,7 +27,7 @@ class imgra_counter extends \Elementor\Widget_Base
 
     public function get_name()
     {
-        return 'imgra_counter';
+        return 'imgra_service';
     }
 
     /**
@@ -43,7 +43,7 @@ class imgra_counter extends \Elementor\Widget_Base
 
     public function get_title()
     {
-        return __('Imgra Counter', 'imgra');
+        return __('Imgra Service', 'imgra');
     }
 
     /**
@@ -59,7 +59,7 @@ class imgra_counter extends \Elementor\Widget_Base
 
     public function get_icon()
     {
-        return 'eicon-shape';
+        return 'eicon-featured-image';
     }
 
     /**
@@ -91,7 +91,7 @@ class imgra_counter extends \Elementor\Widget_Base
     {
 
         $this->start_controls_section(
-            'counter_section',
+            'service_section',
             [
                 'label' => __('Setting', 'imgra'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
@@ -100,17 +100,18 @@ class imgra_counter extends \Elementor\Widget_Base
 
         // slider_type
         $this->add_control(
-            'counter_type',
+            'service_type',
             [
-                'label' => __('Select Counter Style', 'imgra'),
+                'label' => __('Select Team Style', 'imgra'),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'style1',
                 'options' => [
-                    'style1' => __( 'Style 1 ', 'imgra' ),
-                    'style2' => __( 'Style 2', 'imgra' ),
+                    'style1' => __('Style 1 ', 'imgra'),
+                    'style2' => __('Style 2', 'imgra'),
                 ],
             ]
         );
+
 
         $this->add_control(
             'custom_icon',
@@ -119,11 +120,13 @@ class imgra_counter extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => '',
                 'options' => [
-                    '' => __( 'None', 'imgra' ),
-                    'flaticon-people' => __( 'Flaticon-people', 'imgra' ),
-                    'flaticon-title' => __( 'Flaticon-title', 'imgra' ),
-                    'flaticon-briefing' => __( 'Flaticon-briefing', 'imgra' ),
-                    'flaticon-boy-broad-smile' => __( 'Flaticon-boy-broad-smile', 'imgra' ),
+                    '' => __('None', 'imgra'),
+                    'flaticon-consultant' => __('Flaticon-consultant', 'imgra'),
+                    'flaticon-parents' => __('Flaticon-parents', 'imgra'),
+                    'flaticon-student' => __('Flaticon-student', 'imgra'),
+                    'flaticon-passport' => __('Flaticon-passport', 'imgra'),
+                    'flaticon-loan-1' => __('Flaticon-loan-1', 'imgra'),
+                    'flaticon-monitor' => __('Flaticon-monitor', 'imgra'),
                 ],
             ]
         );
@@ -132,7 +135,7 @@ class imgra_counter extends \Elementor\Widget_Base
         $this->add_control(
             'icon',
             [
-                'label' => __('Counter Icon', 'imgra'),
+                'label' => __('Service Icon', 'imgra'),
                 'type' => \Elementor\Controls_Manager::ICONS,
                 'default' => [
                     'value' => 'fas fa-star',
@@ -141,20 +144,17 @@ class imgra_counter extends \Elementor\Widget_Base
             ]
         );
 
-        // Title
 
+        // Title
         $this->add_control(
             'title',
             [
-                'label' => __('Counter Title', 'imgra'),
+                'label' => __('Name', 'imgra'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __('Satisfied Clients', 'imgra'),
+                'default' => __('Online Consultancy', 'imgra'),
                 'label_block' => true,
             ]
         );
-
-
-
         // Content
         $this->add_control(
             'divContent',
@@ -162,14 +162,22 @@ class imgra_counter extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::DIVIDER,
             ]
         );
+        $this->add_control(
+            'content',
+            [
+                'label' => __('Description', 'imgra'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'label_block' => true,
+                'default' => __("Don't look even slightly btkelie.Don't look even slightly believable. If you are going to uspassage of Lorem Ipsum, you need slightly.", 'imgra')
+            ]
+        );
 
         $this->add_control(
-            'counter',
+            'service_url',
             [
-                'label' => __('Counter', 'imgra'),
-                'type' => \Elementor\Controls_Manager::NUMBER,
-                'label_block' => true,
-                'default' => __('143', 'imgra')
+                'label' => __('Link', 'imgra'),
+                'type' => \Elementor\Controls_Manager::URL,
+                'placeholder' => __('https://your-link.com', 'imgra')
             ]
         );
 
@@ -177,12 +185,13 @@ class imgra_counter extends \Elementor\Widget_Base
 
         // STYLE Settings
         $this->start_controls_section(
-            'counter_style_section',
+            'service_style_section',
             [
                 'label' => __('Style', 'imgra'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
+
 
         // Text Alignment
         $this->add_control(
@@ -209,6 +218,20 @@ class imgra_counter extends \Elementor\Widget_Base
             ]
         );
 
+        //Background Style
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Background::get_type(),
+            [
+                'name' => 'service_background',
+                'label' => __( 'Background', 'plugin-domain' ),
+                'types' => [ 'classic', 'gradient', 'video' ],
+                'selector' => '{{WRAPPER}} .practise-3-item, .practise-item',
+            ]
+        );
+
+
+
         //Title Style
         $this->add_control(
             'title_style',
@@ -224,7 +247,7 @@ class imgra_counter extends \Elementor\Widget_Base
                 'name' => 'title_typography',
                 'label' => __('Typography', 'imgra'),
                 'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} h3',
+                'selector' => '{{WRAPPER}} h5 a',
             ]
         );
         $this->add_control(
@@ -232,17 +255,18 @@ class imgra_counter extends \Elementor\Widget_Base
             [
                 'label' => __('Text Color', 'imgra'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#fff',
+                'default' => '#002e5b',
                 'selectors' => [
-                    '{{WRAPPER}} h3' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} h5 a' => 'color: {{VALUE}}',
                 ],
             ]
         );
+
         //Content Style
         $this->add_control(
-            'counter_style',
+            'content_style',
             [
-                'label' => __('Counter', 'imgra'),
+                'label' => __('Description', 'imgra'),
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -250,23 +274,24 @@ class imgra_counter extends \Elementor\Widget_Base
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name' => 'counter_typography',
+                'name' => 'content_typography',
                 'label' => __('Typography', 'imgra'),
                 'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} h2',
+                'selector' => '{{WRAPPER}} p',
             ]
         );
         $this->add_control(
-            'counter_color',
+            'content_color',
             [
                 'label' => __('Text Color', 'imgra'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#fff',
+                'default' => '#515050',
                 'selectors' => [
-                    '{{WRAPPER}} h2' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} p' => 'color: {{VALUE}}',
                 ],
             ]
         );
+
         //Icon Style
         $this->add_control(
             'icon_style',
@@ -281,9 +306,21 @@ class imgra_counter extends \Elementor\Widget_Base
             [
                 'label' => __('Color', 'imgra'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#ffad18',
+                'default' => '#002e5b',
                 'selectors' => [
                     '{{WRAPPER}} i' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'icon_hover_color',
+            [
+                'label' => __('Hover Color', 'imgra'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} .practise-3-item:hover i' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -305,44 +342,54 @@ class imgra_counter extends \Elementor\Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        if (esc_html($settings['counter_type'] == 'style1')):
-        ?>
-        <div class="counter-3-item text-<?php echo esc_attr( $settings['text_alignment'] ); ?>">
-            <div class="number-box">
-                <?php if (!empty($settings['custom_icon'])): ?>
-                <i class="<?php echo esc_html($settings['custom_icon']);?>"></i>
 
-            <?php else: ?>
-                <?php \Elementor\Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?>
-            <?php endif; ?>
-            </div>
-            <h2 class="counter"><?php echo esc_html($settings['counter']);?></h2>
-            <h3><?php echo esc_html($settings['title']);?></h3>
-        </div>
+        if (esc_html($settings['service_type'] == 'style1')):
+            ?>
 
-        <?php  else: ?>
-        <div class="counter-item text-<?php echo esc_attr( $settings['text_alignment'] ); ?>">
-            <div class="count-des">
+            <div class="practise-3-item text-<?php echo esc_attr( $settings['text_alignment'] ); ?>">
                 <?php if (!empty($settings['custom_icon'])): ?>
-                    <i class="<?php echo esc_html($settings['custom_icon']);?>"></i>
+                    <div class="icon-box">
+                        <i class="<?php echo esc_html($settings['custom_icon']); ?>"></i>
+                    </div>
 
                 <?php else: ?>
-                    <?php \Elementor\Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                    <div class="icon-box">
+                        <?php \Elementor\Icons_Manager::render_icon($settings['icon'], ['aria-hidden' => 'true']); ?>
+                    </div>
                 <?php endif; ?>
-            </div>
-            <div class="count-des">
-                <h2 class="counter"><?php echo esc_html($settings['counter']);?></h2>
-                <h3><?php echo esc_html($settings['title']);?></h3>
-            </div>
-        </div>
 
 
-<?php
-endif;
+                <h5><a href="<?php echo esc_url($settings['service_url']); ?>"><?php echo esc_html($settings['title']); ?></a></h5>
+                <p><?php echo esc_html($settings['content']); ?></p>
+                <a href="<?php echo esc_url($settings['service_url']); ?>">→</a>
+            </div>
+
+        <?php else: ?>
+
+            <div class="practise-item">
+                <?php if (!empty($settings['custom_icon'])): ?>
+                    <div class="icon-box">
+                        <i class="<?php echo esc_html($settings['custom_icon']); ?>"></i>
+                    </div>
+
+                <?php else: ?>
+                    <div class="icon-box">
+                        <?php \Elementor\Icons_Manager::render_icon($settings['icon'], ['aria-hidden' => 'true']); ?>
+                    </div>
+                <?php endif; ?>
+
+                <h2><a href="<?php echo esc_url($settings['service_url']); ?>"><?php echo esc_html($settings['title']); ?></a></h2>
+                <p><?php echo esc_html($settings['content']); ?></p>
+            </div>
+
+
+        <?php
+
+        endif;
 
     }
 
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new imgra_counter());
+Plugin::instance()->widgets_manager->register_widget_type(new imgra_service());
